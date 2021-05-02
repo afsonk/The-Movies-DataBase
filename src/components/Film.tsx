@@ -1,9 +1,9 @@
 import React from "react"
-import {api, ResponseType} from "../api/api";
+import {api, ResponseType} from "../types/types";
 
 
 const Film: React.FC<ResponseType> = (({...item}) => {
-    console.log(item)
+
     return (
         <div className={'film__item'}>
             <img className={'film__item-img'} src={`${api.imageApi}${item.poster_path}`} alt={item.title}/>

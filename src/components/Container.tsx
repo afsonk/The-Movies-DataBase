@@ -1,11 +1,8 @@
 import React from 'react';
 import '../styles.scss'
+import { ChildrenProps } from '../types/types';
 
-type Props = {
-    children: JSX.Element
-}
-
-const Container = (props: Props) => {
+const Container = (props: ChildrenProps) => {
     console.log('render');
     return <div className={'container'}>{props.children}</div>
 }

@@ -1,30 +1,38 @@
 import React from "react";
-import {api, FilmsApi, ResponseType} from "../api/api";
+import {FilmsApi} from "../api/api";
 import Container from "./Container";
 import Film from "./Film";
+import { useFilms} from "../context/GlobalState";
+import {setFilmsInState, setFilmTitle} from "../context/ActionCreators";
 
 
 const Home = () => {
-    const [title, setTitle] = React.useState<string>('taxi');
-    const [films, setFilms] = React.useState<ResponseType[]>([]);
+
+    const {state, dispatch} = useFilms();
+
+    const {title, films} = state;
 
     React.useEffect(() => {
-        FilmsApi.getFilms(title)
-            .then(res => setFilms(res.results))
+        FilmsApi.getFilms(title, 2)
+            .then(res => dispatch(setFilmsInState(res.results)))
     }, [title]);
 
+
+    React.useEffect(() => {
+       FilmsApi.getFilms('fight club', 2)
+           .then(res => console.log(res))
+    },[])
 
     const text = React.useRef() as React.MutableRefObject<HTMLInputElement>;
 
     const handleSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        setTitle(text.current.value)
+        dispatch(setFilmTitle(text.current.value));
     }
 
     return (
         <main className={'home'}>
             <Container>
-                <>
                     <form onSubmit={handleSubmit}>
                         <input ref={text} type={'text'} name={'filmName'}/>
                     </form>
@@ -37,7 +45,6 @@ const Home = () => {
                             })
                         }
                     </div>
-                </>
             </Container>
         </main>
     )

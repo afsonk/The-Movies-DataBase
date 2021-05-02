@@ -5,13 +5,17 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header";
 import Home from './components/Home';
+import {FilmsProvider} from "./context/GlobalState";
 
 
 function App() {
     return (
         <Router>
-            <Header/>
-            <Route exact path={'/'} component={Home}/>
+            <FilmsProvider>
+                <Header/>
+                {/*<Route exact path={'/'} component={Home}/>*/}
+                <Home/>
+            </FilmsProvider>
         </Router>
     );
 }
