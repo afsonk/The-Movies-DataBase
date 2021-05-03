@@ -3,20 +3,18 @@ import {setFilmTitle} from "../context/ActionCreators";
 import {useFilms} from "../context/GlobalState";
 
 const SearchBox = () => {
-    const {dispatch} = useFilms();
+    const {state, dispatch} = useFilms();
 
-    const text = React.useRef() as React.MutableRefObject<HTMLInputElement>;
-
-    const handleSubmit = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        dispatch(setFilmTitle(text.current.value));
+    const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+        dispatch(setFilmTitle(e.currentTarget.value));
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form >
             <input
                 className={'search-box__input'}
-                ref={text}
+                value={state.title}
+                onChange={handleChange}
                 type={'text'}
                 name={'filmName'}
                 placeholder={'Type to search...'}

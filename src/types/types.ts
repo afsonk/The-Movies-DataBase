@@ -72,8 +72,9 @@ export type ApiType = {
 export enum api{
     "apiKey" = "02975dd7fd4ed626e2a5a7e13f1eae70",
     "smallImg" = "http://image.tmdb.org/t/p/w300",
-    'mediumImg' = "https://image.tmdb.org/t/p/w500",
+    "mediumImg" = "https://image.tmdb.org/t/p/w500",
     "bigImg" = "http://image.tmdb.org/t/p/original",
+    "trailer" = "https://www.youtube.com/watch?v="
 }
 
 

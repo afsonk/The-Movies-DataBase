@@ -6,9 +6,9 @@ import {clearMovieDetail, setMovieDetail} from "../context/ActionCreators";
 import { api } from "../types/types";
 
 
-const MovieDetail = () => {
+const MovieDetail: React.FC = () => {
     const {state, dispatch} = useFilms();
-    const {movieId}:{movieId: string} = useParams();
+    const {movieId} = useParams<{movieId: string}>();
 
 
     if (!movieId){
@@ -22,14 +22,28 @@ const MovieDetail = () => {
             .then(res => dispatch(setMovieDetail(res)));
     },[movieId]);
 
+    React.useLayoutEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'auto';
+        }
+    },[])
+
+    console.log(movie)
 
     return (
-        <main style={{minHeight:'100vh', display: 'flex', justifyContent: "center"}}>
-            <img
-                className={'movie__background'}
-                src={`${api.bigImg}${movie?.backdrop_path 
-                    ? movie?.backdrop_path 
-                    : movie?.poster_path}`} alt={movie?.title}/>
+        <main
+            className={'movie__background'}
+            style={{minHeight:'100vh', display: 'flex', justifyContent: "center", backgroundImage: `url(${api.bigImg}${movie?.backdrop_path})`, backgroundPosition: 'center', backgroundSize: "cover"}}>
+            <div className={'movie__info'}>
+                <h1 className={'movie__title'}>{movie?.title}</h1>
+                <p className={'movie__overview'}>{movie?.overview}</p>
+                <div className={'genres-list'}>
+                    {movie?.genres.map(item => {
+                        return <span className={'genre'} key={item.id}>{item.name}</span>
+                    })}
+                </div>
+            </div>
         </main>
     );
 }
