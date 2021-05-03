@@ -6,11 +6,12 @@ import filmsReducer from './Reducer';
 // Initial state
 const initialState: GlobalStateType = {
     title: '',
-    films: []
+    films: [],
+    movie: null
 }
 
 // Context creation
-export const FilmsContext = React.createContext<ContextState | undefined>(undefined);
+export const FilmsContext = React.createContext<ContextState | null>(null);
 
 export const FilmsProvider: React.FC<ChildrenProps> = ({children}) => {
     const [state, dispatch] = React.useReducer<React.Reducer<GlobalStateType, GlobalActionTypes>>(filmsReducer, initialState);

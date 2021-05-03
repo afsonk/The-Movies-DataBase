@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header";
 import Home from './components/Home';
+import MovieDetail from './components/Movie';
 import {FilmsProvider} from "./context/GlobalState";
 
 
@@ -13,8 +14,8 @@ function App() {
         <Router>
             <FilmsProvider>
                 <Header/>
-                {/*<Route exact path={'/'} component={Home}/>*/}
-                <Home/>
+                <Route exact path={'/'} component={Home}/>
+                <Route path={'/movie/:movieId'} component={MovieDetail}/>
             </FilmsProvider>
         </Router>
     );

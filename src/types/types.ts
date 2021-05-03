@@ -1,6 +1,8 @@
-import {SET_FILMS_IN_STATE, SET_FILM_TITLE } from "../context/Constans";
+import {SET_FILMS_IN_STATE, SET_FILM_TITLE, SET_MOVIE_DETAILS, CLEAR_MOVIE_DETAILS} from "../context/Constans";
 import React, {Dispatch} from "react";
 
+
+//films array response
 const obj = {
     adult: false,
     backdrop_path: "/rr7E0NoGKxvbkb89eR1GwfoYjpA.jpg",
@@ -18,10 +20,45 @@ const obj = {
     vote_count: 21618,
 }
 
+const singleMovie = {
+    adult: false,
+    backdrop_path: "/6VmFqApQRyZZzmiGOQq2C92jyvH.jpg",
+    belongs_to_collection: null,
+    budget: 200000000,
+    genres: [{id: 18, name: "Drama"}],
+    homepage: "",
+    id: 597,
+    imdb_id: "tt0120338",
+    original_language: "en",
+    original_title: "Titanic",
+    overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. " +
+        "A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to its death—on its first and last voyage—on April 15, 1912.",
+    popularity: 81.808,
+    poster_path: "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
+    production_companies: [
+        {id: 4, logo_path: "/fycMZt242LVjagMByZOLUGbCvv3.png", name: "Paramount", origin_country: "US"},
+    ],
+    production_countries: [{iso_3166_1: "US", name: "United States of America"},],
+    release_date: "1997-11-18",
+    revenue: 2187463944,
+    runtime: 194,
+    spoken_languages: [{english_name: "English", iso_639_1: "en", name: "English"},],
+    status: "Released",
+    tagline: "Nothing on Earth could come between them.",
+    title: "Titanic",
+    video: false,
+    vote_average: 7.9,
+    vote_count: 19107,
+}
+
+
 export type GlobalStateType = {
     title: string,
-    films: ResponseType[]
+    films: ResponseType[],
+    movie: SingleMovieResponseType | null
 }
+
+export type SingleMovieResponseType = typeof singleMovie;
 
 export type ResponseType = typeof obj;
 
@@ -34,8 +71,11 @@ export type ApiType = {
 
 export enum api{
     "apiKey" = "02975dd7fd4ed626e2a5a7e13f1eae70",
-    'imageApi' = 'http://image.tmdb.org/t/p/w200'
+    "smallImg" = "http://image.tmdb.org/t/p/w300",
+    'mediumImg' = "https://image.tmdb.org/t/p/w500",
+    "bigImg" = "http://image.tmdb.org/t/p/original",
 }
+
 
 
 export interface ISetFilmTitle {
@@ -48,6 +88,15 @@ export interface ISetFilmsInState {
     films: ResponseType[]
 }
 
+export interface ISetMovieDetails{
+    type: typeof SET_MOVIE_DETAILS,
+    film: SingleMovieResponseType
+}
+
+export interface IClearMovieDetails{
+    type: typeof CLEAR_MOVIE_DETAILS
+}
+
 export type ChildrenProps = {
     children: React.ReactNode
 }
@@ -57,4 +106,4 @@ export type ContextState = {
     dispatch: Dispatch<GlobalActionTypes>
 }
 
-export type GlobalActionTypes = ISetFilmTitle | ISetFilmsInState;
+export type GlobalActionTypes = ISetFilmTitle | ISetFilmsInState | ISetMovieDetails | IClearMovieDetails;
