@@ -7,7 +7,8 @@ import filmsReducer from './Reducer';
 const initialState: GlobalStateType = {
     title: '',
     films: [],
-    movie: null
+    movie: null,
+    isFetching: false
 }
 
 // Context creation

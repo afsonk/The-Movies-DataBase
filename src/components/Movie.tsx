@@ -34,7 +34,8 @@ const MovieDetail: React.FC = () => {
     return (
         <main
             className={'movie__background'}
-            style={{minHeight:'100vh', display: 'flex', justifyContent: "center", backgroundImage: `url(${api.bigImg}${movie?.backdrop_path})`, backgroundPosition: 'center', backgroundSize: "cover"}}>
+            style={{ backgroundImage: `url(${api.bigImg}${movie?.backdrop_path})`}}
+            >
             <div className={'movie__info'}>
                 <h1 className={'movie__title'}>{movie?.title}</h1>
                 <p className={'movie__overview'}>{movie?.overview}</p>

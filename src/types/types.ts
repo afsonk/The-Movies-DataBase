@@ -1,4 +1,10 @@
-import {SET_FILMS_IN_STATE, SET_FILM_TITLE, SET_MOVIE_DETAILS, CLEAR_MOVIE_DETAILS} from "../context/Constans";
+import {
+    SET_FILMS_IN_STATE,
+    SET_FILM_TITLE,
+    SET_MOVIE_DETAILS,
+    CLEAR_MOVIE_DETAILS,
+    TOGGLE_IS_FETCHING
+} from "../context/Constans";
 import React, {Dispatch} from "react";
 
 
@@ -55,7 +61,8 @@ const singleMovie = {
 export type GlobalStateType = {
     title: string,
     films: ResponseType[],
-    movie: SingleMovieResponseType | null
+    movie: SingleMovieResponseType | null,
+    isFetching: boolean
 }
 
 export type SingleMovieResponseType = typeof singleMovie;
@@ -98,6 +105,11 @@ export interface IClearMovieDetails{
     type: typeof CLEAR_MOVIE_DETAILS
 }
 
+export interface IToggleIsFetching{
+    type: typeof TOGGLE_IS_FETCHING,
+    payload: boolean
+}
+
 export type ChildrenProps = {
     children: React.ReactNode
 }
@@ -107,4 +119,4 @@ export type ContextState = {
     dispatch: Dispatch<GlobalActionTypes>
 }
 
-export type GlobalActionTypes = ISetFilmTitle | ISetFilmsInState | ISetMovieDetails | IClearMovieDetails;
+export type GlobalActionTypes = ISetFilmTitle | ISetFilmsInState | ISetMovieDetails | IClearMovieDetails | IToggleIsFetching;
