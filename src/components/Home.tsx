@@ -5,6 +5,7 @@ import Film from "./Film";
 import {useFilms} from "../context/GlobalState";
 import {setFilmsInState, toggleIsFetching} from "../context/ActionCreators";
 import Loader from "./Loader";
+import SearchBox from "./SearchBox";
 
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
     return (
         <main className={'home'}>
             <Container>
+                <SearchBox/>
                 <div className={'films'}>
                     {
                         isFetching && title

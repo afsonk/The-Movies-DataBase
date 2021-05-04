@@ -10,7 +10,7 @@ const SearchBox = () => {
     }
 
     return(
-        <form >
+        <div className={'search__form'}>
             <input
                 className={'search-box__input'}
                 value={state.title}
@@ -19,7 +19,7 @@ const SearchBox = () => {
                 name={'filmName'}
                 placeholder={'Type to search...'}
             />
-        </form>
+        </div>
     )
 };
 
