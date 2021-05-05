@@ -18,6 +18,10 @@ const SearchBox: React.FC<Props> = ({isSearching, dispatch, title}) => {
         dispatch(toggleSearchBar());
     }
 
+    React.useLayoutEffect(() => {
+        window.scroll(0,0);
+    },[])
+
     return(
         <div className={`search__form ${isSearching ? 'active' : ''}`}>
                     <input

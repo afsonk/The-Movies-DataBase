@@ -1,3 +1,7 @@
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -47,6 +51,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  &.active{
+    fill: #fff;
+  }
 }
 .header__actions{
   display: flex;
@@ -194,4 +201,57 @@ body {
   background: transparent;
   color: #fff;
   cursor: pointer;
+}
+
+.play__btn{
+  font-size: 15px;
+  padding: 0px 18px;
+  height: 56px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1.8px;
+  text-align: center;
+  text-transform: uppercase;
+  background: #fff;
+  border: 1px solid rgb(249, 249, 249);
+  color: #000;
+  img{
+    width: 26px;
+    height: 26px;
+  }
+  span{
+    margin-left: 5px;
+  }
+  &:hover {
+    background: rgb(198, 198, 198);
+  }
+
+}
+.addToFav__btn{
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  position: relative;
+  span{
+    width: 7px;
+    height: 3px;
+    color: #fff;
+  }
+}
+
+.movie__actions{
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: -65px;
+  grid-gap: 15px;
 }

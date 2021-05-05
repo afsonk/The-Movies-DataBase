@@ -4,6 +4,8 @@ import {FilmsApi} from "../api/api";
 import {useFilms} from "../context/GlobalState";
 import {clearMovieDetail, setMovieDetail} from "../context/ActionCreators";
 import { api } from "../types/types";
+import PlayBtn from "./PlayBtn";
+import AddToFavBtn from "./AddToFavBtn";
 
 
 const MovieDetail: React.FC = () => {
@@ -44,7 +46,12 @@ const MovieDetail: React.FC = () => {
                         return <span className={'genre'} key={item.id}>{item.name}</span>
                     })}
                 </div>
+                <div className={'movie__actions'}>
+                    <PlayBtn/>
+                    <AddToFavBtn/>
+                </div>
             </div>
+
         </main>
     );
 }

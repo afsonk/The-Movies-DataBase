@@ -4,6 +4,7 @@ import fav from "../../assets/img/star.svg";
 import {useFilms} from "../../context/GlobalState";
 import {toggleSearchBar} from "../../context/ActionCreators";
 import SearchBtn from "../SearchBtn";
+import FavouriteBtn from "../FavouriteBtn";
 
 
 const HeaderActions = () => {
@@ -21,9 +22,9 @@ const HeaderActions = () => {
             <NavLink
                 to={'/watchList'}
                 className={'header__favourite'}
+                activeClassName={'active'}
             >
-                <img src={fav} alt="favourites"/>
-                <span>Favourites</span>
+                <FavouriteBtn/>
             </NavLink>
 
         </div>
