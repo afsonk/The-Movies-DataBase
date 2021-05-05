@@ -3,7 +3,7 @@ import {
     SET_FILM_TITLE,
     SET_MOVIE_DETAILS,
     CLEAR_MOVIE_DETAILS,
-    TOGGLE_IS_FETCHING
+    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR
 } from "../context/Constans";
 import React, {Dispatch} from "react";
 
@@ -62,7 +62,8 @@ export type GlobalStateType = {
     title: string,
     films: ResponseType[],
     movie: SingleMovieResponseType | null,
-    isFetching: boolean
+    isFetching: boolean,
+    isSearching: boolean
 }
 
 export type SingleMovieResponseType = typeof singleMovie;
@@ -110,6 +111,10 @@ export interface IToggleIsFetching{
     payload: boolean
 }
 
+export interface IToggleSearchBar{
+    type: typeof TOGGLE_SEARCH_BAR,
+}
+
 export type ChildrenProps = {
     children: React.ReactNode
 }
@@ -119,4 +124,9 @@ export type ContextState = {
     dispatch: Dispatch<GlobalActionTypes>
 }
 
-export type GlobalActionTypes = ISetFilmTitle | ISetFilmsInState | ISetMovieDetails | IClearMovieDetails | IToggleIsFetching;
+export type GlobalActionTypes = ISetFilmTitle
+    | ISetFilmsInState
+    | ISetMovieDetails
+    | IClearMovieDetails
+    | IToggleIsFetching
+    | IToggleSearchBar;

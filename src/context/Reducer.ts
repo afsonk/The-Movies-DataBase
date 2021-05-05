@@ -11,7 +11,9 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
         case "clear movie details":
             return {...state, movie: null};
         case "is content loaded":
-            return {...state, isFetching: action.payload}
+            return {...state, isFetching: action.payload};
+        case "show searching bar":
+            return {...state, isSearching: !state.isSearching};
         default:
             throw new Error();
     }

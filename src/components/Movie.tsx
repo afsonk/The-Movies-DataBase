@@ -29,7 +29,7 @@ const MovieDetail: React.FC = () => {
         }
     },[])
 
-    console.log(movie)
+
 
     return (
         <main

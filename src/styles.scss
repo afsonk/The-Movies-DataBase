@@ -31,12 +31,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
+  padding: 10px 0;
 }
 
 .header__logo{
   display: block;
-  width: 200px;
+  max-width: 200px;
+  width: 100%;
   height: 39px;
 }
 .header__favourite{
@@ -62,7 +64,7 @@ body {
 .home{
   min-height: 100vh;
   padding: 0 15px;
-  margin-top: 90px;
+  margin-top: 100px;
 }
 .films{
   display: flex;
@@ -179,6 +181,8 @@ body {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  transform: translateY(0);
+  transition: .2s ease-in-out;
 }
 
 .search__btn{

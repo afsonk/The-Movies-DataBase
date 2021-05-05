@@ -3,7 +3,8 @@ import {
     SET_FILM_TITLE,
     SET_FILMS_IN_STATE,
     SET_MOVIE_DETAILS,
-    TOGGLE_IS_FETCHING
+    TOGGLE_IS_FETCHING,
+    TOGGLE_SEARCH_BAR
 } from "./Constans";
 import {
     IClearMovieDetails,
@@ -11,6 +12,7 @@ import {
     ISetFilmTitle,
     ISetMovieDetails,
     IToggleIsFetching,
+    IToggleSearchBar,
     ResponseType,
     SingleMovieResponseType
 } from "../types/types";
@@ -39,3 +41,7 @@ export const toggleIsFetching = (payload: boolean): IToggleIsFetching => ({
    type: TOGGLE_IS_FETCHING,
    payload
 });
+
+export const toggleSearchBar = (): IToggleSearchBar => ({
+    type: TOGGLE_SEARCH_BAR,
+})

@@ -12,7 +12,7 @@ const Home = () => {
 
     const {state, dispatch} = useFilms();
 
-    const {title, films, isFetching} = state;
+    const {title, films, isFetching, isSearching} = state;
 
     React.useEffect(() => {
         dispatch(toggleIsFetching(true));
@@ -33,7 +33,7 @@ const Home = () => {
     return (
         <main className={'home'}>
             <Container>
-                <SearchBox/>
+                {isSearching && <SearchBox isSearching={isSearching} dispatch={dispatch} title={title}/>}
                 <div className={'films'}>
                     {
                         isFetching && title

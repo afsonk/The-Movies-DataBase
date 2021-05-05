@@ -8,7 +8,8 @@ const initialState: GlobalStateType = {
     title: '',
     films: [],
     movie: null,
-    isFetching: false
+    isFetching: false,
+    isSearching: false
 }
 
 // Context creation

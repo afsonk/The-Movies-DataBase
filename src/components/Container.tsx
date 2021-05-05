@@ -3,7 +3,6 @@ import '../styles.scss'
 import { ChildrenProps } from '../types/types';
 
 const Container = (props: ChildrenProps) => {
-    console.log('render');
-    return <div className={'container'}>{props.children}</div>
+    return <div className={'container'} {...props}/>
 }
 export default Container;
