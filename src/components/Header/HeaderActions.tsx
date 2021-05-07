@@ -20,7 +20,7 @@ const HeaderActions = () => {
                 {!state.isSearching && <SearchBtn handleSearchClick={handleSearchClick}/>}
             </Route>
             <NavLink
-                to={'/watchList'}
+                to={'/favourites'}
                 className={'header__favourite'}
                 activeClassName={'active'}
             >

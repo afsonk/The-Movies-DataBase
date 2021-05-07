@@ -47,7 +47,7 @@ const MovieDetail: React.FC = () => {
                 </div>
                 <div className={'movie__actions'}>
                     <PlayBtn/>
-                    <AddToFavBtn />
+                    <AddToFavBtn/>
                 </div>
             </div>
 

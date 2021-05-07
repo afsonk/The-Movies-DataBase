@@ -95,8 +95,10 @@ body {
     .film__overlay{
       opacity: 1;
     }
-
   }
+  //@media (max-width: 1175px) {
+  //  flex-basis: 33%;
+  //}
 }
 
 
@@ -118,6 +120,9 @@ body {
   border-radius: 5px;
   display: block;
   max-width: 100%;
+  //@media (max-width: 1175px) {
+  //  width: 100%;
+  //}
 }
 
 

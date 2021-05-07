@@ -23,10 +23,10 @@ const useLocalStorage = <T, >(key: string, initialValue?: T): ReturnType<T> => {
     React.useEffect(() => {
         if(prevKey.current !== key){
             localStorage.removeItem(prevKey.current);
+            prevKey.current = key;
         }
         if(state){
             try{
-                prevKey.current = key;
                 localStorage.setItem(key, JSON.stringify(state));
             }catch (err){
                 console.log(err);

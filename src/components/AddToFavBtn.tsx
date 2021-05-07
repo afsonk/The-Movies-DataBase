@@ -11,7 +11,7 @@ const AddToFavBtn = () => {
     const {movieId} = useParams<{ movieId: string }>();
     const [favourites, setFavourites] = React.useState<Array<SingleMovieResponseType | any>>([]);
     const [active, setActive] = React.useState<boolean>(false);
-    const [storage, setStorage] = useLocalStorage('film');
+    const [storage, setStorage] = useLocalStorage('films');
 
     const handleClick = ():void => {
         if(!active){
