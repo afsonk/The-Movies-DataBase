@@ -167,6 +167,11 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.movie__title{
+  span{
+    color: #ff8eaa;
+  }
+}
 
 .genres-list{
   display: flex;

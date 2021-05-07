@@ -31,7 +31,6 @@ const MovieDetail: React.FC = () => {
         }
     }, [])
 
-    console.log(new Date(movie?.release_date!).getFullYear());
 
     return (
         <main
@@ -39,7 +38,7 @@ const MovieDetail: React.FC = () => {
             style={{backgroundImage: `url(${api.bigImg}${movie?.backdrop_path})`}}
         >
             <div className={'movie__info'}>
-                <h1 className={'movie__title'}>{movie?.title}</h1>
+                <h1 className={'movie__title'}>{movie?.title} <span className={'movie__date'}>{new Date(movie?.release_date!).getFullYear()}</span></h1>
                 <p className={'movie__overview'}>{movie?.overview}</p>
                 <div className={'genres-list'}>
                     {movie?.genres.map(item => {
@@ -48,7 +47,7 @@ const MovieDetail: React.FC = () => {
                 </div>
                 <div className={'movie__actions'}>
                     <PlayBtn/>
-                    <AddToFavBtn/>
+                    <AddToFavBtn />
                 </div>
             </div>
 

@@ -7,11 +7,14 @@ type ReturnType<T> = [
 
 const useLocalStorage = <T, >(key: string, initialValue?: T): ReturnType<T> => {
     const [state, setState] = React.useState<T | undefined>(() => {
-            let value = localStorage.getItem(key);
-            if (value) {
-                return JSON.parse(value);
+            try {
+                const item = window.localStorage.getItem(key);
+                return item ? JSON.parse(item) : initialValue;
+            } catch (error) {
+                console.log(error);
+                return initialValue;
             }
-            return initialValue;
+
         }
     );
 
@@ -21,8 +24,14 @@ const useLocalStorage = <T, >(key: string, initialValue?: T): ReturnType<T> => {
         if(prevKey.current !== key){
             localStorage.removeItem(prevKey.current);
         }
-        prevKey.current = key;
-        localStorage.setItem(key, JSON.stringify(state));
+        if(state){
+            try{
+                prevKey.current = key;
+                localStorage.setItem(key, JSON.stringify(state));
+            }catch (err){
+                console.log(err);
+            }
+        }
     }, [state])
 
     return [state, setState];
