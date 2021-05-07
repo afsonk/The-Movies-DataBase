@@ -321,3 +321,14 @@ body {
   background: rgb(51, 51, 51);
   margin: 30px auto;
 }
+
+.pagination__page{
+  cursor: pointer;
+  transition: .1s linear;
+  &:hover{
+    color: #ff355b;
+  }
+  &.selected{
+    color: #ff355b;
+  }
+}

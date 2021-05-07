@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 
 
 type Props = {
-    onPageChange: () => void,
+    onPageChange: ({selected: selectedPage}: {selected: number}) => void,
     totalPages: number | undefined
 }
 

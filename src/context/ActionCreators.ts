@@ -1,5 +1,5 @@
 import {
-    CLEAR_MOVIE_DETAILS,
+    CLEAR_MOVIE_DETAILS, SET_ACTIVE_PAGE,
     SET_FILM_TITLE,
     SET_FILMS_IN_STATE,
     SET_MOVIE_DETAILS,
@@ -8,7 +8,7 @@ import {
 } from "./Constans";
 import {
     ApiType,
-    IClearMovieDetails,
+    IClearMovieDetails, ISetActivePage,
     ISetFilmsInState,
     ISetFilmTitle,
     ISetMovieDetails,
@@ -44,4 +44,9 @@ export const toggleIsFetching = (payload: boolean): IToggleIsFetching => ({
 
 export const toggleSearchBar = (): IToggleSearchBar => ({
     type: TOGGLE_SEARCH_BAR,
+})
+
+export const setActivePage = (payload: number): ISetActivePage => ({
+    type: SET_ACTIVE_PAGE,
+    payload
 })
