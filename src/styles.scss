@@ -206,7 +206,7 @@ body {
 .play__btn{
   font-size: 15px;
   padding: 0px 18px;
-  height: 56px;
+  height: 50px;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
@@ -216,8 +216,9 @@ body {
   text-align: center;
   text-transform: uppercase;
   background: #fff;
-  border: 1px solid rgb(249, 249, 249);
-  color: #000;
+  border: 1px solid #ff9191;
+  background: #333333;
+  color: #ff355b;
   img{
     width: 26px;
     height: 26px;
@@ -226,7 +227,9 @@ body {
     margin-left: 5px;
   }
   &:hover {
-    background: rgb(198, 198, 198);
+    border: 1px solid #ffa7a7;
+    color: #fff;
+    background: rgb(105, 105, 105);
   }
 
 }
@@ -242,9 +245,30 @@ body {
   cursor: pointer;
   position: relative;
   span{
-    width: 7px;
+    transition: all .1s linear;
+    position: absolute;
+    display: block;
+    width: 60%;
     height: 3px;
-    color: #fff;
+    background-color: #fff;
+    &:first-child{
+      transform: rotate(90deg);
+    }
+  }
+  &:hover{
+    background: rgb(105, 105, 105);
+  }
+  &.active{
+    border: 1px solid #ffa7a7;
+    span{
+      background: #ff355b;
+    }
+    span:first-child{
+      transform: rotate(41deg);
+    }
+    span:last-child{
+      transform: rotate(-41deg);
+    }
   }
 }
 

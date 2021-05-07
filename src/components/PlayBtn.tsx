@@ -4,7 +4,7 @@ import play from '../assets/img/play.png'
 
 const SearchBtn = () => {
     return (
-        <button className={'play__btn'}>
+        <button className={'play__btn'} title={'Watch trailer'}>
             <img src={play} alt=""/>
             <span>Trailer</span>
         </button>

@@ -9,7 +9,7 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
         case "set detail info of movie":
             return {...state, movie: action.film};
         case "clear movie details":
-            return {...state, movie: null};
+            return {...state, movie: null };
         case "is content loaded":
             return {...state, isFetching: action.payload};
         case "show searching bar":
