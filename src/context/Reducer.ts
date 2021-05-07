@@ -5,7 +5,7 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
         case "set film title":
             return {...state, title: action.text};
         case "set films array in state":
-            return {...state, films: action.films};
+            return {...state, ...action.films};
         case "set detail info of movie":
             return {...state, movie: action.film};
         case "clear movie details":
@@ -14,6 +14,8 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
             return {...state, isFetching: action.payload};
         case "show searching bar":
             return {...state, isSearching: !state.isSearching};
+        case "set active page":
+            return {...state, page: action.payload}
         default:
             throw new Error();
     }

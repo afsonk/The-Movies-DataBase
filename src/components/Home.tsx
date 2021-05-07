@@ -6,13 +6,14 @@ import {useFilms} from "../context/GlobalState";
 import {setFilmsInState, toggleIsFetching} from "../context/ActionCreators";
 import Loader from "./Loader";
 import SearchBox from "./SearchBox";
+import Pagination from "./Pagination";
 
 
 const Home = () => {
 
     const {state, dispatch} = useFilms();
 
-    const {title, films, isFetching, isSearching} = state;
+    const {title, results, isFetching, isSearching, total_pages} = state;
 
     React.useEffect(() => {
         dispatch(toggleIsFetching(true));
@@ -24,8 +25,12 @@ const Home = () => {
             });
     }, [title]);
 
+    const handlePageClick = () => {
+
+    }
+
     const showPreloadImage = (): boolean => {
-        if(isFetching && title && !films?.results){
+        if(isFetching && title && !results){
             return true;
         }
         return false;
@@ -41,13 +46,14 @@ const Home = () => {
                             ? Array(20).fill(null).map((__, i) => {
                                 return <Loader key={i + "1"}/>
                             })
-                            : films?.results.map((item) => {
+                            : results?.map((item) => {
                                 return (
                                     <Film key={item.id} {...item} />
                                 )
                             })
                     }
                 </div>
+                <Pagination onPageChange={() => console.log('jhjk')} totalPages={total_pages!}/>
             </Container>
         </main>
     )

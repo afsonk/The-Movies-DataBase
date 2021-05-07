@@ -3,7 +3,7 @@ import {
     SET_FILM_TITLE,
     SET_MOVIE_DETAILS,
     CLEAR_MOVIE_DETAILS,
-    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR
+    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE
 } from "../context/Constans";
 import React, {Dispatch} from "react";
 
@@ -62,13 +62,13 @@ const singleMovie = {
 
 export type GlobalStateType = {
     title: string,
-    films: ApiType | null,
+    results: Array<ResponseType> | null,
     movie: SingleMovieResponseType | null,
     isFetching: boolean,
     isSearching: boolean,
     page: number,
-    total_pages: number | null,
-    total_results: number | null
+    total_results: number | null,
+    total_pages: number | null
 }
 
 export type SingleMovieResponseType = typeof singleMovie;
@@ -120,6 +120,11 @@ export interface IToggleSearchBar{
     type: typeof TOGGLE_SEARCH_BAR,
 }
 
+export interface ISetActivePage{
+    type: typeof SET_ACTIVE_PAGE,
+    payload: number
+}
+
 export type ChildrenProps = {
     children: React.ReactNode
 }
@@ -134,4 +139,5 @@ export type GlobalActionTypes = ISetFilmTitle
     | ISetMovieDetails
     | IClearMovieDetails
     | IToggleIsFetching
-    | IToggleSearchBar;
+    | IToggleSearchBar
+    | ISetActivePage;
