@@ -29,6 +29,10 @@ body {
   right: 0;
   background: rgba(30, 30, 30, 0.75);
   backdrop-filter: blur(20px) saturate(2);
+  transition: top 0.5s;
+  &.active{
+    top: -100px;
+  }
 }
 
 .header__inner{
@@ -78,6 +82,9 @@ body {
   flex-wrap: wrap;
   align-items: center;
   grid-gap: 5px;
+  @media (max-width: 1075px) {
+    justify-content: center;
+  }
 }
 .film__item{
   position: relative;
@@ -96,9 +103,18 @@ body {
       opacity: 1;
     }
   }
-  //@media (max-width: 1175px) {
-  //  flex-basis: 33%;
-  //}
+  @media (max-width: 1175px) {
+    flex-basis: 32%;
+  }
+  @media (max-width: 960px) {
+    flex-basis: 48%;
+  }
+  @media (max-width: 650px) {
+    flex-basis: 70%;
+  }
+  @media (max-width: 500px) {
+    flex-basis: 100%;
+  }
 }
 
 
@@ -120,9 +136,9 @@ body {
   border-radius: 5px;
   display: block;
   max-width: 100%;
-  //@media (max-width: 1175px) {
-  //  width: 100%;
-  //}
+  @media (max-width: 1175px) {
+    width: 100%;
+  }
 }
 
 

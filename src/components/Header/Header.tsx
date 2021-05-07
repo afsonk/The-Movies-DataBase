@@ -6,20 +6,35 @@ import '../../styles.scss';
 
 import logo from '../../assets/img/blue_square.svg';
 import Container from "../Container";
-import {useFilms} from "../../context/GlobalState";
-import {clearMovieDetail} from "../../context/ActionCreators";
 import HeaderActions from "./HeaderActions";
 
+
 const Header = () => {
-    const {dispatch} = useFilms();
+    const [hide, setHide] = React.useState(false);
+
+    const prevPosition = React.useRef(window.pageYOffset) as React.MutableRefObject<number>;
+
+    const onScroll = () => {
+        const currentPos = window.pageYOffset;
+        console.log('currentPos', currentPos, 'prevPosition', prevPosition.current)
+        if(prevPosition.current > currentPos){
+            setHide(false);
+        }else {
+            setHide(true);
+        }
+        prevPosition.current = currentPos;
+    }
+
+    React.useEffect(() => {
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll' , onScroll);
+    },[prevPosition.current])
+
     return (
-        <header className={'header'}>
+        <header className={`header ${hide ? 'active' : ''}`}>
             <Container>
                 <div className={'header__inner'}>
-                    <NavLink
-                        to={'/'}
-                        onClick={() => dispatch(clearMovieDetail())}
-                    >
+                    <NavLink to={'/'}>
                         <img className={'header__logo'} src={logo} alt="logo"/>
                     </NavLink>
                     <HeaderActions/>

@@ -32,7 +32,7 @@ const useLocalStorage = <T, >(key: string, initialValue?: T): ReturnType<T> => {
                 console.log(err);
             }
         }
-    }, [state])
+    }, [state, key, prevKey])
 
     return [state, setState];
 }

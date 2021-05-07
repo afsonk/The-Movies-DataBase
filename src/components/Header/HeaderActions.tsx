@@ -1,6 +1,5 @@
 import React from "react";
 import {NavLink, Route} from "react-router-dom";
-import fav from "../../assets/img/star.svg";
 import {useFilms} from "../../context/GlobalState";
 import {toggleSearchBar} from "../../context/ActionCreators";
 import SearchBtn from "../SearchBtn";

@@ -24,9 +24,10 @@ const MovieDetail: React.FC = () => {
             .then(res => dispatch(setMovieDetail(res)));
     }, [movieId]);
 
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
+            dispatch(clearMovieDetail())
             document.body.style.overflow = 'auto';
         }
     }, [])
