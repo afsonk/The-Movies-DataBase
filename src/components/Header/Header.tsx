@@ -10,13 +10,12 @@ import HeaderActions from "./HeaderActions";
 
 
 const Header = () => {
-    const [hide, setHide] = React.useState(false);
+    const [hide, setHide] = React.useState<boolean>(false);
 
     const prevPosition = React.useRef(window.pageYOffset) as React.MutableRefObject<number>;
 
-    const onScroll = () => {
+    const onScroll = (): void => {
         const currentPos = window.pageYOffset;
-        console.log('currentPos', currentPos, 'prevPosition', prevPosition.current)
         if(prevPosition.current > currentPos){
             setHide(false);
         }else {

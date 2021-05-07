@@ -5,7 +5,7 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
         case "set film title":
             return {...state, title: action.text};
         case "set films array in state":
-            return {...state, films:[...action.films]};
+            return {...state, films: action.films};
         case "set detail info of movie":
             return {...state, movie: action.film};
         case "clear movie details":

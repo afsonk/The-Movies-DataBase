@@ -18,17 +18,18 @@ const Home = () => {
         dispatch(toggleIsFetching(true));
         FilmsApi.getFilms(title,)
             .then(res => {
-                dispatch(setFilmsInState(res.results))
+                console.log(res)
+                dispatch(setFilmsInState(res))
                 dispatch(toggleIsFetching(false));
             });
     }, [title]);
 
-
-    React.useEffect(() => {
-        FilmsApi.getFilms()
-            .then(res => console.log(res))
-    }, [])
-
+    const showPreloadImage = (): boolean => {
+        if(isFetching && title && !films?.results){
+            return true;
+        }
+        return false;
+    }
 
     return (
         <main className={'home'}>
@@ -36,11 +37,11 @@ const Home = () => {
                 {isSearching && <SearchBox isSearching={isSearching} dispatch={dispatch} title={title}/>}
                 <div className={'films'}>
                     {
-                        isFetching && title
+                        showPreloadImage()
                             ? Array(20).fill(null).map((__, i) => {
                                 return <Loader key={i + "1"}/>
                             })
-                            : films.map((item) => {
+                            : films?.results.map((item) => {
                                 return (
                                     <Film key={item.id} {...item} />
                                 )

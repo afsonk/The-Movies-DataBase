@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from './components/Home';
-import MovieDetail from './components/Movie';
+import MovieDetail from './components/MovieDetail';
 import {FilmsProvider} from "./context/GlobalState";
 import Favourites from "./components/Favourites";
 

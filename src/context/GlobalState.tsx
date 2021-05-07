@@ -6,10 +6,13 @@ import filmsReducer from './Reducer';
 // Initial state
 const initialState: GlobalStateType = {
     title: '',
-    films: [],
+    films: null,
     movie: null,
     isFetching: false,
-    isSearching: false
+    isSearching: false,
+    page: 1,
+    total_pages: null,
+    total_results: null
 }
 
 // Context creation

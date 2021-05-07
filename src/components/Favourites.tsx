@@ -4,7 +4,7 @@ import useLocalStorage from "../LocalStorage/useLocalStorage";
 import Film from "./Film";
 
 const Favourites: React.FC = () => {
-    const [state, setState] = useLocalStorage('films');
+    const [state] = useLocalStorage('films');
 
     return (
         <main className={'home'}>

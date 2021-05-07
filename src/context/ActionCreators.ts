@@ -7,13 +7,13 @@ import {
     TOGGLE_SEARCH_BAR
 } from "./Constans";
 import {
+    ApiType,
     IClearMovieDetails,
     ISetFilmsInState,
     ISetFilmTitle,
     ISetMovieDetails,
     IToggleIsFetching,
     IToggleSearchBar,
-    ResponseType,
     SingleMovieResponseType
 } from "../types/types";
 
@@ -23,7 +23,7 @@ export const setFilmTitle = (text: string): ISetFilmTitle => ({
     text
 });
 
-export const setFilmsInState = (films: ResponseType[]): ISetFilmsInState => ({
+export const setFilmsInState = ({...films}: ApiType): ISetFilmsInState => ({
     type: SET_FILMS_IN_STATE,
     films
 });

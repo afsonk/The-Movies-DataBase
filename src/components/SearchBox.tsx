@@ -18,7 +18,7 @@ const SearchBox: React.FC<Props> = ({isSearching, dispatch, title}) => {
         dispatch(toggleSearchBar());
     }
 
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         window.scroll(0,0);
     },[])
 

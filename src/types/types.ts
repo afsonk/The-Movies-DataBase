@@ -38,7 +38,9 @@ const singleMovie = {
     original_language: "en",
     original_title: "Titanic",
     overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic, 84 years later. " +
-        "A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to its death—on its first and last voyage—on April 15, 1912.",
+        "A young Rose boards the ship with her mother and fiancé. Meanwhile, Jack Dawson and Fabrizio De Rossi " +
+        "win third-class tickets aboard the ship. Rose tells the whole story from Titanic's departure through to " +
+        "its death—on its first and last voyage—on April 15, 1912.",
     popularity: 81.808,
     poster_path: "/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg",
     production_companies: [
@@ -60,10 +62,13 @@ const singleMovie = {
 
 export type GlobalStateType = {
     title: string,
-    films: ResponseType[],
+    films: ApiType | null,
     movie: SingleMovieResponseType | null,
     isFetching: boolean,
-    isSearching: boolean
+    isSearching: boolean,
+    page: number,
+    total_pages: number | null,
+    total_results: number | null
 }
 
 export type SingleMovieResponseType = typeof singleMovie;
@@ -74,7 +79,7 @@ export type ApiType = {
     page: number,
     results: Array<ResponseType>,
     total_results: number,
-    total_page: number
+    total_pages: number
 }
 
 export enum api{
@@ -94,7 +99,7 @@ export interface ISetFilmTitle {
 
 export interface ISetFilmsInState {
     type: typeof SET_FILMS_IN_STATE,
-    films: ResponseType[]
+    films: ApiType
 }
 
 export interface ISetMovieDetails{

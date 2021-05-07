@@ -21,4 +21,3 @@ const Film: React.FC<ResponseType> = (({...item}) => {
 
 export default Film;
 
-//
