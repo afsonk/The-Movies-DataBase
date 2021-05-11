@@ -15,7 +15,9 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
         case "show searching bar":
             return {...state, isSearching: !state.isSearching};
         case "set active page":
-            return {...state, page: action.payload}
+            return {...state, page: action.payload};
+        case "set movie trailer id":
+            return {...state, trailerId: action.payload}
         default:
             throw new Error();
     }

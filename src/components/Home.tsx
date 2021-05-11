@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {FilmsApi} from "../api/api";
 import Container from "./Container";
 import Film from "./Film";
@@ -6,34 +6,29 @@ import {useFilms} from "../context/GlobalState";
 import {setActivePage, setFilmsInState, toggleIsFetching} from "../context/ActionCreators";
 import Loader from "./Loader";
 import SearchBox from "./SearchBox";
-import Pagination from "./Pagination";
 
 
 const Home = () => {
     const {state, dispatch} = useFilms();
 
-    const {title, results, isFetching, isSearching, total_pages, page} = state;
+    const {title, results, isFetching, isSearching, total_pages, page, total_results} = state;
 
     React.useEffect(() => {
-        dispatch(toggleIsFetching(true));
+
+        !results && dispatch(toggleIsFetching(true));
         FilmsApi.getFilms(title, page)
             .then(res => {
                 dispatch(setFilmsInState(res))
                 dispatch(toggleIsFetching(false));
-            });
+            })
     }, [title, page]);
 
-    const handlePageClick = ({selected: selectedPage}: {selected: number}) => {
+    const handlePageClick = (page: number) => {
+        console.log(page)
+        dispatch(setActivePage(page));
         window.scrollTo(0,0);
-        dispatch(setActivePage(selectedPage + 1));
     }
 
-    const showPreloadImage = (): boolean => {
-        if(isFetching && title && !results){
-            return true;
-        }
-        return false;
-    }
 
     return (
         <main className={'home'}>
@@ -41,7 +36,7 @@ const Home = () => {
                 {isSearching && <SearchBox isSearching={isSearching} dispatch={dispatch} title={title}/>}
                 <div className={'films'}>
                     {
-                        showPreloadImage()
+                        isFetching && title
                             ? Array(20).fill(null).map((__, i) => {
                                 return <Loader key={i + "1"}/>
                             })
@@ -52,7 +47,6 @@ const Home = () => {
                             })
                     }
                 </div>
-                {total_pages ? <Pagination onPageChange={handlePageClick} totalPages={total_pages!}/> : null}
             </Container>
         </main>
     )

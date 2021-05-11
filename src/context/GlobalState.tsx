@@ -12,7 +12,8 @@ const initialState: GlobalStateType = {
     isSearching: false,
     page: 1,
     total_results: null,
-    total_pages: null
+    total_pages: null,
+    trailerId: undefined
 }
 
 // Context creation

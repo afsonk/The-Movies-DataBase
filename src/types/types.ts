@@ -3,7 +3,7 @@ import {
     SET_FILM_TITLE,
     SET_MOVIE_DETAILS,
     CLEAR_MOVIE_DETAILS,
-    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE
+    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER
 } from "../context/Constans";
 import React, {Dispatch} from "react";
 
@@ -59,6 +59,32 @@ const singleMovie = {
     vote_count: 19107,
 }
 
+const movieTrailer = {
+    "id": 597,
+    "results": [
+        {
+            "id": "5af145869251411eae00307d",
+            "iso_639_1": "en",
+            "iso_3166_1": "US",
+            "key": "CHekzSiZjrY",
+            "name": "Titanic | #TBT Trailer | 20th Century FOX",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        }
+    ]
+}
+
+const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+        autoplay: 1,
+    },
+};
+
+export type options = typeof opts;
+
 
 export type GlobalStateType = {
     title: string,
@@ -68,12 +94,15 @@ export type GlobalStateType = {
     isSearching: boolean,
     page: number,
     total_results: number | null,
-    total_pages: number | null
+    total_pages: number | null,
+    trailerId: string | undefined
 }
 
 export type SingleMovieResponseType = typeof singleMovie;
 
 export type ResponseType = typeof obj;
+
+export type TrailerResponseType = typeof movieTrailer;
 
 export type ApiType = {
     page: number,
@@ -125,6 +154,11 @@ export interface ISetActivePage{
     payload: number
 }
 
+export interface ISetMovieTrailer{
+    type: typeof SET_MOVIE_TRAILER,
+    payload: string
+}
+
 export type ChildrenProps = {
     children: React.ReactNode
 }
@@ -140,4 +174,5 @@ export type GlobalActionTypes = ISetFilmTitle
     | IClearMovieDetails
     | IToggleIsFetching
     | IToggleSearchBar
-    | ISetActivePage;
+    | ISetActivePage
+    | ISetMovieTrailer;

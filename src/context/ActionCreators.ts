@@ -2,7 +2,7 @@ import {
     CLEAR_MOVIE_DETAILS, SET_ACTIVE_PAGE,
     SET_FILM_TITLE,
     SET_FILMS_IN_STATE,
-    SET_MOVIE_DETAILS,
+    SET_MOVIE_DETAILS, SET_MOVIE_TRAILER,
     TOGGLE_IS_FETCHING,
     TOGGLE_SEARCH_BAR
 } from "./Constans";
@@ -11,7 +11,7 @@ import {
     IClearMovieDetails, ISetActivePage,
     ISetFilmsInState,
     ISetFilmTitle,
-    ISetMovieDetails,
+    ISetMovieDetails, ISetMovieTrailer,
     IToggleIsFetching,
     IToggleSearchBar,
     SingleMovieResponseType
@@ -49,4 +49,9 @@ export const toggleSearchBar = (): IToggleSearchBar => ({
 export const setActivePage = (payload: number): ISetActivePage => ({
     type: SET_ACTIVE_PAGE,
     payload
-})
+});
+
+export const setMovieTrailer = (payload: string): ISetMovieTrailer => ({
+    type: SET_MOVIE_TRAILER,
+    payload
+});

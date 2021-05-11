@@ -2,34 +2,48 @@ import React from "react";
 import {useParams} from "react-router-dom";
 import {FilmsApi} from "../api/api";
 import {useFilms} from "../context/GlobalState";
-import {clearMovieDetail, setMovieDetail} from "../context/ActionCreators";
+import {clearMovieDetail, setMovieDetail, setMovieTrailer} from "../context/ActionCreators";
 import {api} from "../types/types";
 import PlayBtn from "./PlayBtn";
 import AddToFavBtn from "./AddToFavBtn";
+import Trailer from "./Trailer";
 
 
 const MovieDetail: React.FC = () => {
+    const [isPlaying, setIsPlaying] = React.useState(false);
     const {state, dispatch} = useFilms();
     const {movieId} = useParams<{ movieId: string }>();
+    const opts = {
+        height: '80%',
+        width: '90%',
+        playerVars: {
+            autoplay: 1,
+        },
+    };
 
-    if (!movieId) {
-        dispatch(clearMovieDetail())
+    const {movie, trailerId} = state;
+
+    const handleOutsideClick = (e: any) => {
+        if(e.target.className === 'trailer__container'){
+            setIsPlaying(false);
+        }
     }
-
-    const {movie} = state;
 
     React.useEffect(() => {
         FilmsApi.getMovieById(movieId)
             .then(res => dispatch(setMovieDetail(res)));
+        FilmsApi.getMovieTrailer(movieId)
+            .then(res => dispatch(setMovieTrailer(res.results[0]?.key)));
     }, [movieId]);
 
     React.useEffect(() => {
         document.body.style.overflow = 'hidden';
+        document.addEventListener('click', handleOutsideClick);
         return () => {
             dispatch(clearMovieDetail())
             document.body.style.overflow = 'auto';
-        }
-    }, [])
+            document.removeEventListener('click', handleOutsideClick)}
+    }, []);
 
 
     return (
@@ -46,11 +60,11 @@ const MovieDetail: React.FC = () => {
                     })}
                 </div>
                 <div className={'movie__actions'}>
-                    <PlayBtn/>
+                    {trailerId && <PlayBtn onTrailerPlay={() => setIsPlaying(true)}/>}
                     <AddToFavBtn/>
                 </div>
             </div>
-
+            {isPlaying && <Trailer opts={opts} trailerId={trailerId!}/>}
         </main>
     );
 }

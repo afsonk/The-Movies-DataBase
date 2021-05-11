@@ -1,8 +1,8 @@
-import { api, ApiType, SingleMovieResponseType } from "../types/types";
+import {api, ApiType, SingleMovieResponseType, TrailerResponseType} from "../types/types";
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://api.themoviedb.org/3/',
+    baseURL: 'https://api.themoviedb.org/3/'
 });
 
 export const FilmsApi = {
@@ -13,5 +13,10 @@ export const FilmsApi = {
     getMovieById(id: string){
         return instance.get<SingleMovieResponseType>(`movie/${id}?api_key=${api.apiKey}`)
             .then(res => res.data)
+    },
+    getMovieTrailer(id: string){
+        return instance.get<TrailerResponseType>(`movie/${id}/videos?api_key=${api.apiKey}&language=en-US`)
+            .then(res => res.data)
     }
 }
+
