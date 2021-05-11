@@ -24,7 +24,7 @@ const MovieDetail: React.FC = () => {
     const {movie, trailerId} = state;
 
     const handleOutsideClick = (e: any) => {
-        if(e.target.className === 'trailer__container'){
+        if (e.target.className === 'trailer__container') {
             setIsPlaying(false);
         }
     }
@@ -37,12 +37,18 @@ const MovieDetail: React.FC = () => {
     }, [movieId]);
 
     React.useEffect(() => {
-        document.body.style.overflow = 'hidden';
+        if (/Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.body.style.overflow = 'auto';
+        }
+        else {
+            document.body.style.overflow = 'hidden';
+        }
         document.addEventListener('click', handleOutsideClick);
         return () => {
             dispatch(clearMovieDetail())
             document.body.style.overflow = 'auto';
-            document.removeEventListener('click', handleOutsideClick)}
+            document.removeEventListener('click', handleOutsideClick)
+        }
     }, []);
 
 
@@ -52,7 +58,9 @@ const MovieDetail: React.FC = () => {
             style={{backgroundImage: `url(${api.bigImg}${movie?.backdrop_path})`}}
         >
             <div className={'movie__info'}>
-                <h1 className={'movie__title'}>{movie?.title} <span className={'movie__date'}>{movie?.release_date && new Date(movie?.release_date!).getFullYear()}</span></h1>
+                <h1 className={'movie__title'}>{movie?.title} <span
+                    className={'movie__date'}>{movie?.release_date && new Date(movie?.release_date!).getFullYear()}</span>
+                </h1>
                 <p className={'movie__overview'}>{movie?.overview}</p>
                 <div className={'genres-list'}>
                     {movie?.genres.map(item => {
@@ -62,9 +70,12 @@ const MovieDetail: React.FC = () => {
                 <div className={'movie__actions'}>
                     {trailerId && <PlayBtn onTrailerPlay={() => setIsPlaying(true)}/>}
                     <AddToFavBtn/>
+
                 </div>
             </div>
-            {isPlaying && <Trailer opts={opts} trailerId={trailerId!}/>}
+            {isPlaying && <Trailer opts={opts}
+                                   trailerId={trailerId!}
+                                   onEnd={() => setIsPlaying(false)}/>}
         </main>
     );
 }

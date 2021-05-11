@@ -18,7 +18,10 @@ const Header = () => {
         const currentPos = window.pageYOffset;
         if(prevPosition.current > currentPos){
             setHide(false);
-        }else {
+        }else if(document.body.style.overflow === 'hidden'){
+            setHide(false);
+        }
+        else {
             setHide(true);
         }
         prevPosition.current = currentPos;

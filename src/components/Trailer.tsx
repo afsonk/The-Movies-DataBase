@@ -4,16 +4,18 @@ import { options } from '../types/types';
 
 type Props = {
     trailerId: string,
-    opts: any
+    opts: any,
+    onEnd: () => void
 }
 
-const Trailer = ({trailerId, opts}: Props) => {
+const Trailer = ({trailerId, opts, onEnd}: Props) => {
     return <>
         <YouTube
             videoId={trailerId}
             opts={opts}
             className={'trailer'}
             containerClassName={'trailer__container'}
+            onEnd={onEnd}
         />
     </>
 }
