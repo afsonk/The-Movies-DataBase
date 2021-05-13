@@ -177,10 +177,10 @@ body {
 
 
 .search-box__input{
-  padding: 10px;
+  padding: 10px 30px 10px 10px;
   background-color: transparent;
   border: 1px solid #b0b0b0;
-  border-radius: 20px;
+  border-radius: 4px;
   color: #6b6b6b;
   font-family: inherit;
   outline: transparent;
@@ -189,6 +189,12 @@ body {
     background-color: #fff;
   }
 }
+.search__error{
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+}
+
 .movie__background{
   min-height:100vh;
   display: flex;

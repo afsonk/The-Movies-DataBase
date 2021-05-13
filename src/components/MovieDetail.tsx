@@ -59,7 +59,6 @@ const MovieDetail: React.FC<Props> = ({contentType, id}) => {
         }
     }, []);
 
-
     return (
         <main
             className={'movie__background'}

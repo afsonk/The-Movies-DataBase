@@ -8,13 +8,11 @@ import Loader from "./Loader";
 import SearchBox from "./SearchBox";
 
 
-const Home = () => {
+const Home:React.FC = () => {
     const {state, dispatch} = useFilms();
-
     const {title, results, isFetching, isSearching, total_pages, page, total_results} = state;
 
     React.useEffect(() => {
-
         !results && dispatch(toggleIsFetching(true));
         FilmsApi.getFilms(title, page)
             .then(res => {
@@ -27,27 +25,35 @@ const Home = () => {
     const handlePageClick = (page: number) => {
         console.log(page)
         dispatch(setActivePage(page));
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 
+    const handleError = (results: Array<any> | null, title: string) => {
+        if(!isSearching){
+            if(!title && !results?.length) return <p className={'search__error'}>Type to search</p>;
+        }
+        if(title && !results?.length) return <p className={'search__error'}>{`No results found for "${title}"`}</p>;
+        return;
+    }
 
     return (
         <main className={'home'}>
             <Container>
                 {isSearching && <SearchBox isSearching={isSearching} dispatch={dispatch} title={title}/>}
-                <div className={'films'}>
-                    {
-                        isFetching && title
-                            ? Array(20).fill(null).map((__, i) => {
-                                return <Loader key={i + "1"}/>
-                            })
-                            : results?.map((item) => {
-                                return (
-                                    <Film key={item?.id} {...item} />
-                                )
-                            })
-                    }
-                </div>
+                    <div className={'films'}>
+                        {
+                            isFetching && title
+                                ? Array(20).fill(null).map((__, i) => {
+                                    return <Loader key={i + "1"}/>
+                                })
+                                : results?.map((item) => {
+                                    return (
+                                        <Film key={item?.id} {...item} />
+                                    )
+                                })
+                        }
+                    </div>
+                {handleError(results, title)}
             </Container>
         </main>
     )
