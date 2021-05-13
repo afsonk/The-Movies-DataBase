@@ -7,16 +7,17 @@ const instance = axios.create({
 
 export const FilmsApi = {
     getFilms(title: string = 'interstellar', page: number = 1) {
-        return instance.get<ApiType>(`search/movie?api_key=${api.apiKey}&language=en-US&query=${title}&page=${page}&adult=false`)
+        return instance.get<ApiType>(`search/multi?api_key=${api.apiKey}&language=en-US&query=${title}&page=${page}&include_adult=false`)
             .then(res => res.data)
     },
-    getMovieById(id: string){
-        return instance.get<SingleMovieResponseType>(`movie/${id}?api_key=${api.apiKey}`)
+    getMovieById(category: string,id: string){
+        return instance.get<SingleMovieResponseType>(`${category}/${id}?api_key=${api.apiKey}`)
             .then(res => res.data)
     },
-    getMovieTrailer(id: string){
-        return instance.get<TrailerResponseType>(`movie/${id}/videos?api_key=${api.apiKey}&language=en-US`)
+    getMovieTrailer(category: string,id: string){
+        return instance.get<TrailerResponseType>(`${category}/${id}/videos?api_key=${api.apiKey}&language=en-US`)
             .then(res => res.data)
     }
 }
 
+// search/movie?api_key=${api.apiKey}&language=en-US&query=${title}&page=${page}&adult=false

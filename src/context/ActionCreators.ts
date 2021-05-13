@@ -51,7 +51,7 @@ export const setActivePage = (payload: number): ISetActivePage => ({
     payload
 });
 
-export const setMovieTrailer = (payload: string): ISetMovieTrailer => ({
+export const setMovieTrailer = (payload: string | null): ISetMovieTrailer => ({
     type: SET_MOVIE_TRAILER,
     payload
 });

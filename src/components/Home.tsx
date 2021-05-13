@@ -18,6 +18,7 @@ const Home = () => {
         !results && dispatch(toggleIsFetching(true));
         FilmsApi.getFilms(title, page)
             .then(res => {
+                console.log(res);
                 dispatch(setFilmsInState(res))
                 dispatch(toggleIsFetching(false));
             })
@@ -42,7 +43,7 @@ const Home = () => {
                             })
                             : results?.map((item) => {
                                 return (
-                                    <Film key={item.id} {...item} />
+                                    <Film key={item?.id} {...item} />
                                 )
                             })
                     }

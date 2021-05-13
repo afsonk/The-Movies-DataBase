@@ -1,6 +1,6 @@
 import React from 'react';
 import YouTube from "react-youtube";
-import { options } from '../types/types';
+
 
 type Props = {
     trailerId: string,

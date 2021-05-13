@@ -13,7 +13,7 @@ const initialState: GlobalStateType = {
     page: 1,
     total_results: null,
     total_pages: null,
-    trailerId: undefined
+    trailerId: null
 }
 
 // Context creation
