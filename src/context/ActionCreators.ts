@@ -14,7 +14,7 @@ import {
     ISetMovieDetails, ISetMovieTrailer,
     IToggleIsFetching,
     IToggleSearchBar,
-    SingleMovieResponseType
+    SingleMovieResponseType,
 } from "../types/types";
 
 

@@ -3,7 +3,7 @@ import {
     SET_FILM_TITLE,
     SET_MOVIE_DETAILS,
     CLEAR_MOVIE_DETAILS,
-    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER
+    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER,
 } from "../context/Constans";
 import React, {Dispatch} from "react";
 
@@ -294,6 +294,8 @@ export interface ISetMovieTrailer {
     type: typeof SET_MOVIE_TRAILER,
     payload: string | null
 }
+
+
 
 export type ChildrenProps = {
     children: React.ReactNode

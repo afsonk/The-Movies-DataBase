@@ -1,5 +1,5 @@
 import React, {Dispatch} from 'react';
-import {setFilmTitle, toggleSearchBar} from "../context/ActionCreators";
+import {setActivePage, setFilmTitle, toggleSearchBar} from "../context/ActionCreators";
 import {GlobalActionTypes} from "../types/types";
 
 type Props = {
@@ -11,6 +11,7 @@ type Props = {
 const SearchBox: React.FC<Props> = ({isSearching, dispatch, title}) => {
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>): void => {
+        dispatch(setActivePage(1));
         dispatch(setFilmTitle(e.currentTarget.value));
     }
 

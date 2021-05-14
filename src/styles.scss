@@ -349,7 +349,6 @@ body {
 .pagination{
   display: flex;
   width: 100%;
-  max-width: 20rem;
   justify-content: space-evenly;
   -webkit-box-align: center;
   align-items: center;
@@ -360,17 +359,36 @@ body {
   list-style: none;
   background: rgb(51, 51, 51);
   margin: 30px auto;
+  overflow-x: auto;
 }
 
 .pagination__page{
   cursor: pointer;
   transition: .1s linear;
+  display: inline-block;
+  min-width: 40px;
+  height: 40px;
+  position: relative;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #3a3a3a;
   &:hover{
     color: #ff355b;
   }
   &.selected{
     color: #ff355b;
   }
+  &.active{
+    color: #ff355b;
+  }
+}
+.pagination__button{
+  border: none;
+  background: transparent;
+  min-height: 42px;
+  min-width: 50px;
 }
 
 .trailer__container{
