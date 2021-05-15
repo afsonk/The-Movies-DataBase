@@ -24,29 +24,33 @@ let Pagination: React.FC<PropsType> = ({
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionPageNumber = portionNumber * portionSize;
 
+    React.useEffect(() => {
+        const currentPortion = Math.ceil(currentPage / portionSize);
+        setPortionNumber(currentPortion);
+    },[]);
+
 
     return (
-        <div className={'pagination'}>
-            {portionNumber > 1 && <button className={'pagination__button'} onClick={() => setPortionNumber(portionNumber - 1)}>Prev Page</button>}
+        <ul className={'pagination'}>
+            {portionNumber > 1 && <li className={'pagination__button'} onClick={() => setPortionNumber(portionNumber - 1)}>Prev Page</li>}
             {
                 pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(elem => {
-                        return <span
+                        return <li
                             key={elem}
                             className={classNames({
                                 'active': elem === currentPage,
                                 'pagination__page': 1
                             })}
-                            onClick={() => onPageChanged(elem)}>{elem}</span>
+                            onClick={() => onPageChanged(elem)}>{elem}</li>
                     })
             }
             {portionCount > portionNumber &&
-            <button className={'pagination__button'} onClick={() => setPortionNumber(portionNumber + 1)}>Next Page</button>
+            <li className={'pagination__button'} onClick={() => setPortionNumber(portionNumber + 1)}>Next Page</li>
             }
-        </div>
+        </ul>
     )
 }
 
 export default Pagination;
-// currentPage === elem ? styles.selectedPage :

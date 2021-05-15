@@ -348,47 +348,56 @@ body {
 
 .pagination{
   display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  -webkit-box-align: center;
+  justify-content: center;
   align-items: center;
   align-self: center;
-  padding: 0.5rem;
-  margin: 2rem 0px;
+  width: 100%;
+  grid-gap: 5px;
+  max-width: 700px;
+  padding: 8px;
   border-radius: 5px;
-  list-style: none;
   background: rgb(51, 51, 51);
   margin: 30px auto;
-  overflow-x: auto;
+  @media (max-width: 740px){
+    overflow-x: auto;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
 }
 
 .pagination__page{
   cursor: pointer;
-  transition: .1s linear;
-  display: inline-block;
-  min-width: 40px;
-  height: 40px;
   position: relative;
-  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 40px;
+  height: 40px;
+  font-size: 18px;
+  transition: .1s linear;
   border: 1px solid #3a3a3a;
   &:hover{
     color: #ff355b;
-  }
-  &.selected{
-    color: #ff355b;
+    background-color: #454545;
   }
   &.active{
-    color: #ff355b;
+    color: #dedede;
+    background-color: #737373;
   }
 }
 .pagination__button{
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   background: transparent;
+  border: 1px solid #3a3a3a;
   min-height: 42px;
-  min-width: 50px;
+  min-width: 90px;
+  &:hover{
+    color: #ff355b;
+    background-color: #454545;
+  }
 }
 
 .trailer__container{

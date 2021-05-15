@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 export const FilmsApi = {
-    getFilms(title: string = 'interstellar', page: number = 1) {
+    getFilms(title: string, page: number = 1) {
         return instance.get<ApiType>(`search/multi?api_key=${api.apiKey}&language=en-US&query=${title}&page=${page}&include_adult=false`)
             .then(res => res.data)
     },
