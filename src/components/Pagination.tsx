@@ -25,8 +25,8 @@ let Pagination: React.FC<PropsType> = ({
     let rightPortionPageNumber = portionNumber * portionSize;
 
     React.useEffect(() => {
-        const currentPortion = Math.ceil(currentPage / portionSize);
-        setPortionNumber(currentPortion);
+        const currentPortionNumber = Math.ceil(currentPage / portionSize);
+        setPortionNumber(currentPortionNumber);
     },[]);
 
 

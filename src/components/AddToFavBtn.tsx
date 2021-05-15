@@ -12,7 +12,7 @@ const AddToFavBtn = () => {
     const [storage, setStorage] = useLocalStorage('films');
 
     const {state} = useFilms();
-    const {movieId} = useParams<{ movieId: string }>();
+    const {movieId, tvId} = useParams<{ movieId: string, tvId: string }>();
 
     const handleClick = ():void => {
         if(!active){
@@ -37,7 +37,7 @@ const AddToFavBtn = () => {
 
     React.useEffect(() => {
             favourites.forEach(item => {
-                Number(movieId) === item?.id && setActive(prevState => !prevState);
+                Number(movieId || tvId) === item?.id && setActive(prevState => !prevState);
             });
     },[favourites]);
 

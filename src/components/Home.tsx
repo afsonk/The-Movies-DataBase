@@ -55,8 +55,8 @@ const Home: React.FC = () => {
                     }
                 </div>
                 {handleError(results, title)}
-                {total_results && <Pagination currentPage={page}
-                             onPageChanged={onPageClick} totalPages={total_pages!}
+                {total_results! > 1 && <Pagination currentPage={page}
+                                                onPageChanged={onPageClick} totalPages={total_pages!}
                 />}
             </Container>
         </main>)
