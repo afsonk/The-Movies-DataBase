@@ -3,13 +3,16 @@ import {Film, Container,useLocalStorage} from "../shared";
 
 const Favourites: React.FC = () => {
     const [state] = useLocalStorage('films');
+
     const handleEmptyFav = () => {
         if(Array.isArray(state)){
-            if(!state.length) return <p className={'search__error'}>Find movies or tv-series and add it to Favorites</p>;
+            if(!state.length) return <p className={'search__error'}>Find movies or tv-series and add them to Favorites</p>;
         }
-
     }
 
+    React.useEffect(() => {
+        window.scrollTo(0,0);
+    },[])
     return (
         <main className={'home'}>
             <Container>

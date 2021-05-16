@@ -6,6 +6,7 @@ import {api} from "../../types/types";
 import PlayBtn from "./PlayBtn";
 import AddToFavBtn from "./AddToFavBtn";
 import Trailer from "./Trailer";
+import './styles.scss'
 
 type Props = {
     contentType: string,

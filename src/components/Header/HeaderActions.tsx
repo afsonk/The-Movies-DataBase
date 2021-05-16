@@ -2,12 +2,11 @@ import React from "react";
 import {NavLink, Route} from "react-router-dom";
 import {useFilms} from "../../context/GlobalState";
 import {toggleSearchBar} from "../../context/ActionCreators";
-import SearchBtn from "../Home/SearchBtn";
-import FavouriteBtn from "../Favourites/FavouriteBtn";
+import SearchBtn from "./SearchBtn";
+import FavouriteBtn from "./FavouriteBtn";
 
 
 const HeaderActions = () => {
-
     const {state, dispatch} = useFilms();
 
     const handleSearchClick = (): void => {

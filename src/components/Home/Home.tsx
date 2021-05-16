@@ -3,6 +3,7 @@ import {FilmsApi} from "../../api/api";
 import {Container,Pagination, Film} from "../shared";
 import {useFilms} from "../../context/GlobalState";
 import {setActivePage, setFilmsInState, toggleIsFetching} from "../../context/ActionCreators";
+import './styles.scss'
 import Loader from "./Loader";
 import SearchBox from "./SearchBox";
 
