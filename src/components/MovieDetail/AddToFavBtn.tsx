@@ -39,7 +39,7 @@ const AddToFavBtn = () => {
             favourites.forEach(item => {
                 Number(movieId || tvId) === item?.id && setActive(prevState => !prevState);
             });
-    },[movieId, tvId]);
+    },[favourites]);
 
     return (
         <button className={`addToFav__btn ${active ? 'active' : ''}`}
