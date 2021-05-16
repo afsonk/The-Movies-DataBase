@@ -1,7 +1,7 @@
 import React from "react";
-import useLocalStorage from "../LocalStorage/useLocalStorage";
-import {useFilms} from "../context/GlobalState";
-import {SingleMovieResponseType} from "../types/types";
+import {useLocalStorage} from "../shared";
+import {useFilms} from "../../context/GlobalState";
+import {SingleMovieResponseType} from "../../types/types";
 import {useParams} from "react-router-dom";
 
 
@@ -39,7 +39,7 @@ const AddToFavBtn = () => {
             favourites.forEach(item => {
                 Number(movieId || tvId) === item?.id && setActive(prevState => !prevState);
             });
-    },[favourites]);
+    },[movieId, tvId]);
 
     return (
         <button className={`addToFav__btn ${active ? 'active' : ''}`}

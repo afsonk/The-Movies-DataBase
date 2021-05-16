@@ -1,6 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom";
-import {api, ResponseType} from "../types/types";
+import {api, ResponseType} from "../../types/types";
 
 
 const Film: React.FC<ResponseType> = React.memo((({...item}) => {

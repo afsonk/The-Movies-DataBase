@@ -1,5 +1,5 @@
 import React from "react";
-import play from '../assets/img/play.png'
+import play from '../../assets/img/play.png'
 
 
 type Props = {

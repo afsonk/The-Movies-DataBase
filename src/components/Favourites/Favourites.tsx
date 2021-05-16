@@ -1,7 +1,5 @@
 import React from "react";
-import Container from "./Container";
-import useLocalStorage from "../LocalStorage/useLocalStorage";
-import Film from "./Film";
+import {Film, Container,useLocalStorage} from "../shared";
 
 const Favourites: React.FC = () => {
     const [state] = useLocalStorage('films');

@@ -5,7 +5,7 @@ import {
 import '../../styles.scss';
 
 import logo from '../../assets/img/blue_square.svg';
-import Container from "../Container";
+import {Container} from "../shared";
 import HeaderActions from "./HeaderActions";
 
 

@@ -26,6 +26,7 @@ const obj = {
     vote_count: 21618,
 }
 
+//tvShow detailed response
 const objTv = {
     "backdrop_path": "/qjUqBVLUPX1Pc4cyYljZfAJHf8N.jpg",
     "first_air_date": "1994-09-22",
@@ -49,6 +50,8 @@ const objTv = {
 
 }
 
+
+//film detailed response
 const singleMovie = {
     adult: false,
     backdrop_path: "/6VmFqApQRyZZzmiGOQq2C92jyvH.jpg",
@@ -82,6 +85,7 @@ const singleMovie = {
     vote_count: 19107,
 }
 
+//trailer response
 const movieTrailer = {
     "id": 597,
     "results": [
@@ -221,7 +225,6 @@ const opts = {
 
 export type options = typeof opts;
 
-
 export type GlobalStateType = {
     title: string,
     results: Array<ResponseType> | null,
@@ -248,6 +251,7 @@ export type ApiType = {
     total_pages: number
 }
 
+//
 export enum api {
     "apiKey" = "02975dd7fd4ed626e2a5a7e13f1eae70",
     "smallImg" = "http://image.tmdb.org/t/p/w300",
@@ -256,7 +260,7 @@ export enum api {
     "trailer" = "https://www.youtube.com/watch?v="
 }
 
-
+//action creators types
 export interface ISetFilmTitle {
     type: typeof SET_FILM_TITLE,
     text: string
@@ -296,16 +300,18 @@ export interface ISetMovieTrailer {
 }
 
 
-
+//common type for children props
 export type ChildrenProps = {
     children: React.ReactNode
 }
 
+//context state type
 export type ContextState = {
     state: GlobalStateType,
     dispatch: Dispatch<GlobalActionTypes>
 }
 
+//action types for dispatch
 export type GlobalActionTypes = ISetFilmTitle
     | ISetFilmsInState
     | ISetMovieDetails

@@ -1,6 +1,6 @@
 import React, {Dispatch} from 'react';
-import {setActivePage, setFilmTitle, toggleSearchBar} from "../context/ActionCreators";
-import {GlobalActionTypes} from "../types/types";
+import {setActivePage, setFilmTitle, toggleSearchBar} from "../../context/ActionCreators";
+import {GlobalActionTypes} from "../../types/types";
 
 type Props = {
     isSearching: boolean,

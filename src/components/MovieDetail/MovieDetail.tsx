@@ -1,8 +1,8 @@
 import React from "react";
-import {FilmsApi} from "../api/api";
-import {useFilms} from "../context/GlobalState";
-import {clearMovieDetail, setMovieDetail, setMovieTrailer} from "../context/ActionCreators";
-import {api} from "../types/types";
+import {FilmsApi} from "../../api/api";
+import {useFilms} from "../../context/GlobalState";
+import {clearMovieDetail, setMovieDetail, setMovieTrailer} from "../../context/ActionCreators";
+import {api} from "../../types/types";
 import PlayBtn from "./PlayBtn";
 import AddToFavBtn from "./AddToFavBtn";
 import Trailer from "./Trailer";

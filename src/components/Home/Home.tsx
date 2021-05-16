@@ -1,10 +1,8 @@
 import React from "react";
-import {FilmsApi} from "../api/api";
-import Container from "./Container";
-import Pagination from "./Pagination";
-import Film from "./Film";
-import {useFilms} from "../context/GlobalState";
-import {setActivePage, setFilmsInState, toggleIsFetching} from "../context/ActionCreators";
+import {FilmsApi} from "../../api/api";
+import {Container,Pagination, Film} from "../shared";
+import {useFilms} from "../../context/GlobalState";
+import {setActivePage, setFilmsInState, toggleIsFetching} from "../../context/ActionCreators";
 import Loader from "./Loader";
 import SearchBox from "./SearchBox";
 
@@ -29,12 +27,14 @@ const Home: React.FC = () => {
 
     React.useEffect(() => {
         dispatch(toggleIsFetching(true));
-        FilmsApi.getFilms(title, page)
-            .then(res => {
-                dispatch(setFilmsInState(res));
-            }).finally(() => {
-            dispatch(toggleIsFetching(false));
-        });
+        if(title){
+            FilmsApi.getFilms(title, page)
+                .then(res => {
+                    dispatch(setFilmsInState(res));
+                }).finally(() => {
+                dispatch(toggleIsFetching(false));
+            });
+        }
     }, [title, page]);
 
     return (
