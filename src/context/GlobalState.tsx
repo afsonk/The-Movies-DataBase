@@ -5,11 +5,11 @@ import filmsReducer from './Reducer';
 
 // Initial state
 const initialState: GlobalStateType = {
-    title: 'taxi',
+    title: '',
     results: null,
     movie: null,
     isFetching: false,
-    isSearching: true,
+    isSearching: false,
     page: 1,
     total_results: null,
     total_pages: null,

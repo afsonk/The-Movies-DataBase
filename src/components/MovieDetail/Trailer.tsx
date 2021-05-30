@@ -18,6 +18,7 @@ const Trailer = ({trailerId, opts, onEnd}: Props) => {
             document.body.style.overflow = 'auto';
         }
     },[])
+
     return <>
         <CloseButton onClick={onEnd}/>
         <YouTube
