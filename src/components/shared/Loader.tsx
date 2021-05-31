@@ -15,6 +15,3 @@ const MyLoader = () => (
 );
 
 export default MyLoader;
-
-// backgroundColor="#645c5e"
-// foregroundColor="#838383"
