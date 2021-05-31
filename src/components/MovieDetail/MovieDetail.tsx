@@ -1,11 +1,10 @@
 import React from "react";
-import {useHistory} from 'react-router-dom';
+import {useHistory, useLocation} from 'react-router-dom'
 import {FilmsApi} from "../../api/api";
 import {useFilms} from "../../context/GlobalState";
 import {
     clearMovieDetail, setActiveGenre,
     setActivePage,
-    setFilmsInState,
     setMovieDetail,
     setMovieTrailer
 } from "../../context/ActionCreators"
@@ -55,7 +54,7 @@ const MovieDetail: React.FC<Props> = ({contentType, id}) => {
         dispatch(setActivePage(1));
         dispatch(setActiveGenre(id));
         window.scrollTo(0, 0);
-        history.push('/');
+        history.push('/',{ from: 'movie detail page' });
     }
 
     React.useEffect(() => {

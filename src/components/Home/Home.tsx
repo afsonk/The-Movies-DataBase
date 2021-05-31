@@ -5,18 +5,20 @@ import {useFilms} from "../../context/GlobalState"
 import {setActivePage, setFilmsInState} from "../../context/ActionCreators"
 import './styles.scss'
 import SearchBox from "./SearchBox"
+import {useHistory} from "react-router-dom"
 
 
 const Home: React.FC = () => {
     const {state, dispatch} = useFilms()
     const {title, results, isSearching, total_pages, page, total_results, genre} = state
+    const history = useHistory<any>()
 
 
     const handleError = (results: Array<any> | null, title: string) => {
-        if (!isSearching) {
+        if (!isSearching && history.location.state?.from !== "movie detail page") {
             if (!title && !results?.length) return <p className={'search__error'}>Type to search</p>
         }
-        if (title && !results?.length) return <p className={'search__error'}>{`No results found for "${title}"`}</p>
+        if (title && !results?.length && history.location.state?.from !== "movie detail page") return <p className={'search__error'}>{`No results found for "${title}"`}</p>
         return
     }
 
@@ -26,6 +28,7 @@ const Home: React.FC = () => {
     }
 
     React.useLayoutEffect(() => {
+        console.log(history.location.state)
         if (title && !genre) {
             FilmsApi.getFilms(title, page)
                 .then(res => {
