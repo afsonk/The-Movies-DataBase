@@ -32,7 +32,7 @@ let Pagination: React.FC<PropsType> = ({
 
     return (
         <ul className={'pagination'}>
-            {portionNumber > 1 && <li className={'pagination__button'} onClick={() => setPortionNumber(portionNumber - 1)}>Prev Page</li>}
+            {portionNumber > 1 && <li className={'pagination__button'} onClick={() => setPortionNumber(portionNumber - 1)}>Prev Pages</li>}
             {
                 pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -47,7 +47,7 @@ let Pagination: React.FC<PropsType> = ({
                     })
             }
             {portionCount > portionNumber &&
-            <li className={'pagination__button'} onClick={() => setPortionNumber(portionNumber + 1)}>Next Page</li>
+            <li className={'pagination__button'} onClick={() => setPortionNumber(portionNumber + 1)}>Next Pages</li>
             }
         </ul>
     )
