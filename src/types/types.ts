@@ -3,8 +3,8 @@ import {
     SET_FILM_TITLE,
     SET_MOVIE_DETAILS,
     CLEAR_MOVIE_DETAILS,
-    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER,
-} from "../context/Constans";
+    TOGGLE_IS_FETCHING, TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER, SET_ACTIVE_GENRE,
+} from "../context/Constans"
 import React, {Dispatch} from "react";
 
 
@@ -229,12 +229,12 @@ export type GlobalStateType = {
     title: string,
     results: Array<ResponseType> | null,
     movie: SingleMovieResponseType | null,
-    isFetching: boolean,
     isSearching: boolean,
     page: number,
     total_results: number | null,
     total_pages: number | null,
-    trailerId: string | null
+    trailerId: string | null,
+    genre: null | number
 }
 
 export type SingleMovieResponseType = typeof singleMovie & typeof tvShow;
@@ -280,11 +280,6 @@ export interface IClearMovieDetails {
     type: typeof CLEAR_MOVIE_DETAILS
 }
 
-export interface IToggleIsFetching {
-    type: typeof TOGGLE_IS_FETCHING,
-    payload: boolean
-}
-
 export interface IToggleSearchBar {
     type: typeof TOGGLE_SEARCH_BAR,
 }
@@ -297,6 +292,11 @@ export interface ISetActivePage {
 export interface ISetMovieTrailer {
     type: typeof SET_MOVIE_TRAILER,
     payload: string | null
+}
+
+export interface ISetActiveGenre{
+    type: typeof SET_ACTIVE_GENRE,
+    payload: number | null
 }
 
 
@@ -312,11 +312,12 @@ export type ContextState = {
 }
 
 //action types for dispatch
-export type GlobalActionTypes = ISetFilmTitle
+export type GlobalActionTypes =
+    | ISetFilmTitle
     | ISetFilmsInState
     | ISetMovieDetails
     | IClearMovieDetails
-    | IToggleIsFetching
     | IToggleSearchBar
     | ISetActivePage
-    | ISetMovieTrailer;
+    | ISetMovieTrailer
+    | ISetActiveGenre;

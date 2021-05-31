@@ -21,10 +21,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   padding: 3px 6px;
   border-radius: 8px;
   background: rgb(51,51,51);
   color: rgb(255, 53, 91);
+  transition: .1s linear;
+  &:hover{
+    background: rgb(105, 105, 105);
+    color: #fff;
+  }
 }
 
 
@@ -45,6 +51,7 @@
   border: 1px solid #ff9191;
   background: #333333;
   color: #ff355b;
+  transition: .1s linear;
   img{
     width: 26px;
     height: 26px;
@@ -60,16 +67,17 @@
 
 }
 .addToFav__btn{
-  height: 44px;
-  width: 44px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 44px;
+  width: 44px;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 50%;
   border: 2px solid white;
   cursor: pointer;
-  position: relative;
+  transition: .1s linear;
   span{
     transition: all .1s linear;
     position: absolute;

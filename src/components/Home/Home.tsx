@@ -2,15 +2,14 @@ import React from "react"
 import {FilmsApi} from "../../api/api"
 import {Container, Pagination, Film} from "../shared"
 import {useFilms} from "../../context/GlobalState"
-import {setActivePage, setFilmsInState, toggleIsFetching} from "../../context/ActionCreators"
+import {setActivePage, setFilmsInState} from "../../context/ActionCreators"
 import './styles.scss'
-import Loader from "../shared/Loader"
 import SearchBox from "./SearchBox"
 
 
 const Home: React.FC = () => {
     const {state, dispatch} = useFilms()
-    const {title, results, isFetching, isSearching, total_pages, page, total_results} = state
+    const {title, results, isSearching, total_pages, page, total_results, genre} = state
 
 
     const handleError = (results: Array<any> | null, title: string) => {
@@ -27,16 +26,19 @@ const Home: React.FC = () => {
     }
 
     React.useEffect(() => {
-        dispatch(toggleIsFetching(true))
-        if (title) {
+        if (title && !genre) {
             FilmsApi.getFilms(title, page)
                 .then(res => {
                     dispatch(setFilmsInState(res))
-                }).finally(() => {
-                dispatch(toggleIsFetching(false))
-            })
+                })
         }
-    }, [title, page])
+        else{
+            FilmsApi.getMovieByGenre(genre!, page)
+                .then(res => {
+                    dispatch(setFilmsInState(res));
+                })
+        }
+    }, [title, page, genre])
 
     return (
         <main className={'home'}>

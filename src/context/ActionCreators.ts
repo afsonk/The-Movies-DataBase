@@ -1,21 +1,25 @@
 import {
-    CLEAR_MOVIE_DETAILS, SET_ACTIVE_PAGE,
+    CLEAR_MOVIE_DETAILS,
+    SET_ACTIVE_GENRE,
+    SET_ACTIVE_PAGE,
     SET_FILM_TITLE,
     SET_FILMS_IN_STATE,
-    SET_MOVIE_DETAILS, SET_MOVIE_TRAILER,
-    TOGGLE_IS_FETCHING,
+    SET_MOVIE_DETAILS,
+    SET_MOVIE_TRAILER,
     TOGGLE_SEARCH_BAR
-} from "./Constans";
+} from "./Constans"
 import {
     ApiType,
-    IClearMovieDetails, ISetActivePage,
+    IClearMovieDetails,
+    ISetActiveGenre,
+    ISetActivePage,
     ISetFilmsInState,
     ISetFilmTitle,
-    ISetMovieDetails, ISetMovieTrailer,
-    IToggleIsFetching,
+    ISetMovieDetails,
+    ISetMovieTrailer,
     IToggleSearchBar,
     SingleMovieResponseType,
-} from "../types/types";
+} from "../types/types"
 
 
 export const setFilmTitle = (text: string): ISetFilmTitle => ({
@@ -37,11 +41,6 @@ export const clearMovieDetail = (): IClearMovieDetails => ({
     type: CLEAR_MOVIE_DETAILS
 });
 
-export const toggleIsFetching = (payload: boolean): IToggleIsFetching => ({
-   type: TOGGLE_IS_FETCHING,
-   payload
-});
-
 export const toggleSearchBar = (): IToggleSearchBar => ({
     type: TOGGLE_SEARCH_BAR,
 })
@@ -55,3 +54,8 @@ export const setMovieTrailer = (payload: string | null): ISetMovieTrailer => ({
     type: SET_MOVIE_TRAILER,
     payload
 });
+
+export const setActiveGenre = (payload: null | number): ISetActiveGenre => ({
+    type: SET_ACTIVE_GENRE,
+    payload
+})

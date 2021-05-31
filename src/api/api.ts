@@ -14,6 +14,10 @@ export const FilmsApi = {
         return instance.get<SingleMovieResponseType>(`${category}/${id}?api_key=${api.apiKey}`)
             .then(res => res.data)
     },
+    getMovieByGenre(id: number, page: number = 1){
+        return instance.get<ApiType>(`discover/movie?api_key=${api.apiKey}&with_genres=${id}&page=${page}`)
+            .then(res => res.data)
+    },
     getMovieTrailer(category: string,id: string){
         return instance.get<TrailerResponseType>(`${category}/${id}/videos?api_key=${api.apiKey}&language=en-US`)
             .then(res => res.data)

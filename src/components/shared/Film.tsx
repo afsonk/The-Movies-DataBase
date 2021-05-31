@@ -10,7 +10,9 @@ const Film: React.FC<ResponseType> = React.memo((({...item}) => {
         const linkTo = item.original_title ? 'movie' : 'tv';
         const title = item.original_title ? item.original_title : item.original_name;
 
+
         const handleImageLoad = () => setImageLoading(false);
+
 
         return (
             <>

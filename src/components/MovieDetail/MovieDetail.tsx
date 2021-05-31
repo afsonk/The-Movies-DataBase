@@ -1,7 +1,14 @@
 import React from "react";
+import {useHistory} from 'react-router-dom';
 import {FilmsApi} from "../../api/api";
 import {useFilms} from "../../context/GlobalState";
-import {clearMovieDetail, setMovieDetail, setMovieTrailer} from "../../context/ActionCreators";
+import {
+    clearMovieDetail, setActiveGenre,
+    setActivePage,
+    setFilmsInState,
+    setMovieDetail,
+    setMovieTrailer
+} from "../../context/ActionCreators"
 import {api} from "../../types/types";
 import PlayBtn from "./PlayBtn";
 import AddToFavBtn from "./AddToFavBtn";
@@ -16,8 +23,10 @@ type Props = {
 const MovieDetail: React.FC<Props> = ({contentType, id}) => {
     const [isPlaying, setIsPlaying] = React.useState(false);
     const {state, dispatch} = useFilms();
+
     const {movie, trailerId} = state;
     const title = movie?.title ? movie?.title : movie?.original_name;
+    const history = useHistory()
 
     const opts = {
         height: '80%',
@@ -40,6 +49,13 @@ const MovieDetail: React.FC<Props> = ({contentType, id}) => {
         else {
             return 'hidden';
         }
+    }
+
+    const handleGangesClick = (id: number) => {
+        dispatch(setActivePage(1));
+        dispatch(setActiveGenre(id));
+        window.scrollTo(0, 0);
+        history.push('/');
     }
 
     React.useEffect(() => {
@@ -73,7 +89,9 @@ const MovieDetail: React.FC<Props> = ({contentType, id}) => {
                 <p className={'movie__overview'}>{movie?.overview}</p>
                 <div className={'genres-list'}>
                     {movie?.genres.map(item => {
-                        return <span className={'genre'} key={item.id}>{item.name}</span>
+                        return <span className={'genre'}
+                                     onClick={() => handleGangesClick(item.id)}
+                                     key={item.id}>{item.name}</span>
                     })}
                 </div>
                 <div className={'movie__actions'}>

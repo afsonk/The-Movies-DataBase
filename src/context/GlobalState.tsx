@@ -8,12 +8,12 @@ const initialState: GlobalStateType = {
     title: '',
     results: null,
     movie: null,
-    isFetching: false,
     isSearching: false,
     page: 1,
     total_results: null,
     total_pages: null,
-    trailerId: null
+    trailerId: null,
+    genre: null
 }
 
 // Context creation
