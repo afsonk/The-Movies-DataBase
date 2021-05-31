@@ -27,7 +27,7 @@ export const setFilmTitle = (text: string): ISetFilmTitle => ({
     text
 });
 
-export const setFilmsInState = ({...films}: ApiType): ISetFilmsInState => ({
+export const setFilmsInState = ({...films}: ApiType | {}): ISetFilmsInState => ({
     type: SET_FILMS_IN_STATE,
     films
 });

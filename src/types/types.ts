@@ -268,7 +268,7 @@ export interface ISetFilmTitle {
 
 export interface ISetFilmsInState {
     type: typeof SET_FILMS_IN_STATE,
-    films: ApiType
+    films: ApiType | {}
 }
 
 export interface ISetMovieDetails {

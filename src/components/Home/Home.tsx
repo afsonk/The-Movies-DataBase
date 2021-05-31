@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         dispatch(setActivePage(pageNumber))
     }
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         if (title && !genre) {
             FilmsApi.getFilms(title, page)
                 .then(res => {
