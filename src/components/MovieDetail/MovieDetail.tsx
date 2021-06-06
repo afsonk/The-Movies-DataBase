@@ -1,5 +1,5 @@
 import React from "react";
-import {useHistory, useLocation} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {FilmsApi} from "../../api/api";
 import {useFilms} from "../../context/GlobalState";
 import {

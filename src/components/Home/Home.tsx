@@ -28,7 +28,6 @@ const Home: React.FC = () => {
     }
 
     React.useLayoutEffect(() => {
-        console.log(history.location.state)
         if (title && !genre) {
             FilmsApi.getFilms(title, page)
                 .then(res => {
