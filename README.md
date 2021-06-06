@@ -14,3 +14,4 @@ This is a simple project that allows you to find any movie or a tv show. You can
 ### `React Router` - for dynamic links;
 ### `SCSS` - for styling;
 
+## Back-End was provided by themoviedb.org
