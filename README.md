@@ -8,12 +8,12 @@ This is a simple project that allows you to find any movie or a tv show. You can
 
 ### `React` - building UI interface;
 ### `TypeScript` - for static type definitions and error catching;
-### `@redux/toolkit` - for state managment;
+### `React Context API` - for state managment;
 ### `Local storage` - for saving favorites movies or tv series;
 ### `Redux thunk` - for async actions;
 ### `React Router` - for dynamic links;
 ### `SCSS` - for styling;
 
 ## Links
-Live preview https://movie-app-pet-project.netlify.app/
-BackEnd https://www.themoviedb.org/
+### Live preview https://movie-app-pet-project.netlify.app/
+### BackEnd https://www.themoviedb.org/
