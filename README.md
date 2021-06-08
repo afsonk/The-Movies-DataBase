@@ -17,5 +17,5 @@ This is a simple project that allows you to find any movie or a tv show. You can
 ### `SCSS` - for styling;
 
 ## Links
-### Live preview https://the-movie-database-3632d.web.app/
+### Live preview https://the-movie-database-3632d.firebaseapp.com/
 ### BackEnd https://www.themoviedb.org/
