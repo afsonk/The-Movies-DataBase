@@ -2,7 +2,7 @@
 
 ## Short description
 
-This is a simple project that allows you to find any movie or a tv show. You can see their plot, genres, the release date, also you can watch a youtube trailer that opens in a modal window. The main feature which was implemented in this project is the favorites page. All liked films or series are saving in the local storage, so you can easily access them even if you are closed the page.
+This is a simple project that allows you to find any movie or a tv show. You can see their plot, genres, the release date, also you can watch a youtube trailer that opens in a modal window. The main feature which was implemented in this project is the favorites page. All liked films or series are saving in the firestore database. To do this, user has to create an account or log in if it already exists, and he'll be able to add any picture to the favorites section.
 
 ## Implemented technologies
 
