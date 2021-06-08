@@ -2,6 +2,7 @@ import {
     CLEAR_MOVIE_DETAILS,
     SET_ACTIVE_GENRE,
     SET_ACTIVE_PAGE,
+    SET_FAVORITES,
     SET_FILM_TITLE,
     SET_FILMS_IN_STATE,
     SET_MOVIE_DETAILS,
@@ -13,11 +14,12 @@ import {
     IClearMovieDetails,
     ISetActiveGenre,
     ISetActivePage,
+    ISetFavoriteFilms,
     ISetFilmsInState,
     ISetFilmTitle,
     ISetMovieDetails,
     ISetMovieTrailer,
-    IToggleSearchBar,
+    IToggleSearchBar, ResponseType,
     SingleMovieResponseType,
 } from "../types/types"
 
@@ -57,5 +59,10 @@ export const setMovieTrailer = (payload: string | null): ISetMovieTrailer => ({
 
 export const setActiveGenre = (payload: null | number): ISetActiveGenre => ({
     type: SET_ACTIVE_GENRE,
+    payload
+})
+
+export const setFavoriteMovie = (payload: Array<ResponseType> | null): ISetFavoriteFilms => ({
+    type: SET_FAVORITES,
     payload
 })

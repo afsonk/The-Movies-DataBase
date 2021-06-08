@@ -7,3 +7,4 @@ export const TOGGLE_SEARCH_BAR = 'show searching bar';
 export const SET_ACTIVE_PAGE = 'set active page';
 export const SET_MOVIE_TRAILER = 'set movie trailer id';
 export const SET_ACTIVE_GENRE = 'set active genre';
+export const SET_FAVORITES = 'set favorite movies'

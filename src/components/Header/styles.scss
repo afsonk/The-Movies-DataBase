@@ -48,3 +48,22 @@
     margin-top: 4px;
   }
 }
+.auth__btn{
+  font-size: 15px;
+  min-width: 77px;
+  font-weight: 500;
+  padding: 0px 14px;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  background: #01b4e4;
+  border: none;
+  color: #fff;
+  transition: .1s linear;
+  &:hover {
+    color: #fff;
+    background: #0098bf;
+  }
+}

@@ -18,6 +18,8 @@ function filmsReducer(state: GlobalStateType, action:GlobalActionTypes): GlobalS
             return {...state, trailerId: action.payload};
         case "set active genre":
             return {...state, genre: action.payload, results: []}
+        case "set favorite movies":
+            return {...state, favorites: action.payload}
         default:
             throw new Error();
     }

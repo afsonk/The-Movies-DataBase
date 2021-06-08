@@ -1,51 +1,51 @@
-import React from "react";
-import {useLocalStorage} from "../shared";
-import {useFilms} from "../../context/GlobalState";
-import {SingleMovieResponseType} from "../../types/types";
-import {useParams} from "react-router-dom";
-
+import React, {useState} from "react"
+import {useHistory, useParams} from "react-router-dom"
+import classnames from "classnames"
+import {useFilms} from "../../context/FilmsState";
+import {useAuth} from "../../context/AuthState"
 
 
 const AddToFavBtn = () => {
-    const [favourites, setFavourites] = React.useState<Array<SingleMovieResponseType | any>>([]);
-    const [active, setActive] = React.useState<boolean>(false);
-    const [storage, setStorage] = useLocalStorage('films');
-
+    const [active, setActive] = useState<boolean>(false);
     const {state} = useFilms();
+    const {addUserContent, currentUser} = useAuth();
+
+    const history = useHistory();
     const {movieId, tvId} = useParams<{ movieId: string, tvId: string }>();
 
     const handleClick = ():void => {
-        if(!active){
-            const movieList = [...favourites, state.movie];
-            setFavourites(movieList);
-            setActive(prev => !prev);
-            setStorage(movieList);
+
+        if(!currentUser){
+           return history.push('/login')
         }
-        else {
-            const movieList = favourites.filter(item => {
-                return item.id !== state.movie?.id;
-            });
-            setFavourites(movieList);
+
+        if(!active){
+            addUserContent(state.movie!)
             setActive(prev => !prev);
-            setStorage(movieList);
+        }
+
+        else {
+            addUserContent(state.movie!, true)
+            setActive(prev => !prev);
         }
     }
 
+    // is film in favorites
     React.useEffect(() => {
-        Array.isArray(storage) && setFavourites([...storage]);
-    },[storage])
-
-    React.useEffect(() => {
-            favourites.forEach(item => {
+        state.favorites?.forEach(item => {
                 Number(movieId || tvId) === item?.id && setActive(prevState => !prevState);
             });
-    },[favourites]);
+    },[state.favorites]);
+
 
     return (
-        <button className={`addToFav__btn ${active ? 'active' : ''}`}
+        <button className={classnames("addToFav__btn",{
+            "active": active,
+            "disabled": !currentUser
+        })}
                 onClick={handleClick}
                 title={active
-                    ? 'Remove film from favourites'
+                    ? 'Remove film from favourites' : !currentUser ? 'Please login to add film to the favorites'
                     : 'Add film to favourites'
                 }>
             <span></span>

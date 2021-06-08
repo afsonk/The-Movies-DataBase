@@ -104,6 +104,12 @@
       transform: rotate(-41deg);
     }
   }
+  &.disabled{
+    cursor: not-allowed;
+    &:hover{
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  }
 }
 
 .movie__actions{

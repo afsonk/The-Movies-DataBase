@@ -1,7 +1,7 @@
 import React from "react"
 import {FilmsApi} from "../../api/api"
 import {Container, Pagination, Film} from "../shared"
-import {useFilms} from "../../context/GlobalState"
+import {useFilms} from "../../context/FilmsState"
 import {setActivePage, setFilmsInState} from "../../context/ActionCreators"
 import './styles.scss'
 import SearchBox from "./SearchBox"

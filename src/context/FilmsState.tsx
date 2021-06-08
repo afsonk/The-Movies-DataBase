@@ -1,10 +1,10 @@
 import React from 'react';
 import {ChildrenProps, ContextState, GlobalActionTypes, GlobalStateType} from "../types/types";
-import filmsReducer from './Reducer';
+import filmsReducer from './FilmsReducer';
 
 
 // Initial state
-const initialState: GlobalStateType = {
+const initialStateFilms: GlobalStateType = {
     title: '',
     results: null,
     movie: null,
@@ -13,14 +13,15 @@ const initialState: GlobalStateType = {
     total_results: null,
     total_pages: null,
     trailerId: null,
-    genre: null
+    genre: null,
+    favorites: null
 }
 
 // Context creation
 export const FilmsContext = React.createContext<ContextState | null>(null);
 
 export const FilmsProvider: React.FC<ChildrenProps> = ({children}) => {
-    const [state, dispatch] = React.useReducer<React.Reducer<GlobalStateType, GlobalActionTypes>>(filmsReducer, initialState);
+    const [state, dispatch] = React.useReducer<React.Reducer<GlobalStateType, GlobalActionTypes>>(filmsReducer, initialStateFilms);
 
     return (
         <FilmsContext.Provider value={{state, dispatch}}>
@@ -28,7 +29,6 @@ export const FilmsProvider: React.FC<ChildrenProps> = ({children}) => {
         </FilmsContext.Provider>
     )
 }
-
 
 // Use context custom hook
 export const useFilms = () => {

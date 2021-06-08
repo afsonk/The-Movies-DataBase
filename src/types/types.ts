@@ -3,9 +3,10 @@ import {
     SET_FILM_TITLE,
     SET_MOVIE_DETAILS,
     CLEAR_MOVIE_DETAILS,
-    TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER, SET_ACTIVE_GENRE,
+    TOGGLE_SEARCH_BAR, SET_ACTIVE_PAGE, SET_MOVIE_TRAILER, SET_ACTIVE_GENRE, SET_FAVORITES,
 } from "../context/Constans"
 import React, {Dispatch} from "react";
+import firebase from "firebase"
 
 
 //films array response
@@ -234,7 +235,8 @@ export type GlobalStateType = {
     total_results: number | null,
     total_pages: number | null,
     trailerId: string | null,
-    genre: null | number
+    genre: null | number,
+    favorites: Array<ResponseType> | null
 }
 
 export type SingleMovieResponseType = typeof singleMovie & typeof tvShow;
@@ -299,6 +301,10 @@ export interface ISetActiveGenre{
     payload: number | null
 }
 
+export interface ISetFavoriteFilms{
+    type: typeof SET_FAVORITES,
+    payload: Array<ResponseType> | null
+}
 
 //common type for children props
 export type ChildrenProps = {
@@ -311,7 +317,16 @@ export type ContextState = {
     dispatch: Dispatch<GlobalActionTypes>
 }
 
-//action types for dispatch
+export type authContextType = {
+    signup: (email: string, password: string) => firebase.auth.UserCredential,
+    login: (email: string, password: string) => firebase.auth.Auth,
+    addUserContent: (movie: SingleMovieResponseType, isExist?: boolean) => void,
+    getUserData: () => firebase.firestore.DocumentData | undefined,
+    currentUser: firebase.User,
+    logout: () => firebase.auth.Auth
+}
+
+//films action types for dispatch
 export type GlobalActionTypes =
     | ISetFilmTitle
     | ISetFilmsInState
@@ -320,4 +335,5 @@ export type GlobalActionTypes =
     | IToggleSearchBar
     | ISetActivePage
     | ISetMovieTrailer
-    | ISetActiveGenre;
+    | ISetActiveGenre
+    | ISetFavoriteFilms;

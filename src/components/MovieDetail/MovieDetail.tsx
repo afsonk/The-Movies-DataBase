@@ -1,7 +1,7 @@
 import React from "react";
 import {useHistory} from 'react-router-dom'
 import {FilmsApi} from "../../api/api";
-import {useFilms} from "../../context/GlobalState";
+import {useFilms} from "../../context/FilmsState";
 import {
     clearMovieDetail, setActiveGenre,
     setActivePage,
@@ -21,11 +21,11 @@ type Props = {
 
 const MovieDetail: React.FC<Props> = ({contentType, id}) => {
     const [isPlaying, setIsPlaying] = React.useState(false);
+    const history = useHistory()
     const {state, dispatch} = useFilms();
 
     const {movie, trailerId} = state;
     const title = movie?.title ? movie?.title : movie?.original_name;
-    const history = useHistory()
 
     const opts = {
         height: '80%',
